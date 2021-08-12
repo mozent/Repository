@@ -1,0 +1,68 @@
+@keyframes circle {
+    0% {
+        transform:rotate(0deg)
+    }
+    50% {
+        transform:rotate(360deg)
+    }
+    100% {
+        transform:rotate(360deg)
+    }
+}
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform:rotate(0deg)
+    }
+    50% {
+        -webkit-transform:rotate(180deg)
+    }
+    100% {
+        -webkit-transform:rotate(360deg)
+    }
+}
+
+.loading, .mask {
+    display: block;
+    position: absolute;
+    width: 100%;
+}
+
+.loading {
+    top: 50%;    
+    margin-top: -50px;
+    color: rgb(58, 48, 48);
+}
+
+.mask {
+    z-index: 190;
+    background: rgb(219 216 216 / 30%);
+    top: 0;
+    left: 0;
+    height: 100%
+}
+
+.circle {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    left: 30px;
+    z-index: 200;
+    -webkit-animation: circle 1.5s infinite linear;
+	animation: circle 1.5s infinite linear;    
+}
+.loading-letter-top::before {
+    content: "Loading";
+    position: absolute;
+    left: 49.2%;
+    top: 43%;
+    font-size: 28px;
+    z-index: 210;
+}
+.loading-letter-bottom::before {
+    content: "資料處理中，請稍候...";
+    position: absolute;
+    left: 46%;
+    font-size: 24px;
+    z-index: 210;
+}
