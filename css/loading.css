@@ -35,7 +35,8 @@
 
 .mask {
     z-index: 190;
-    background: rgb(219 216 216 / 30%);
+    background: #333;
+    opacity: 0.5;
     top: 0;
     left: 0;
     height: 100%
