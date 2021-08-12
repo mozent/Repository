@@ -28,15 +28,15 @@
 }
 
 .loading {
-    top: 50%;    
+    top: 25%;    
     margin-top: -50px;
     color: rgb(58, 48, 48);
 }
 
 .mask {
     z-index: 190;
-    background: #333;
-    opacity: 0.5;
+    background: rgb(136, 135, 135);
+    opacity: 0.3;
     top: 0;
     left: 0;
     height: 100%
