@@ -111,7 +111,90 @@ nav li:first-child a {
     padding: 0 .4rem;  /* custom */
 }
 
+.specifics {
+    margin-top: 4rem;
+}
+
+.spec-grid.header-text {
+    margin-bottom: 2.3rem;
+}
+
+.spec-grid.header-text p {
+    font-size: .8rem;
+    color: #ccc;
+    line-height: 1.4rem;
+    font-weight: 500;
+}
+
+.specifics h1 {
+    font-size: 1.9rem;
+    margin-bottom: .5rem;
+}
+
 .spec-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 3.3rem;
+    margin-bottom: 2rem;
+}
+
+.spec-item {
+    box-shadow: 5px 5px 20px rgb(0, 0, 0,.2);
+    border-radius: 8px;
+}
+
+.spec-item h2 {
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
+}
+
+.spec-item p {
+    font-size: .8rem;
+    line-height: 1.4rem;
+}
+
+.ux-card p, .ui-card p {
+    margin-bottom: 1.2rem;
+}
+
+.ui-card {
+    background-image: url(../img/4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ui-card .overlay {
+    padding: 2rem;
+    background: rgba(118 , 141, 217, 0.6);
+    overflow-x: hidden;
+}
+
+.ux-card {
+    background-image: url(../img/5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ux-card .overlay {
+    padding: 2rem;
+    background: rgba(59 , 133, 239, 0.6);
+    overflow-x: hidden;
+}
+
+.ui-card .overlay h1,
+.ux-card .overlay h1,
+.ui-card .overlay p,
+.ux-card .overlay p{
+    color: #fff;
+}
+
+.ui-card button,
+.ux-card button {
+    background: transparent;
+    padding: .5rem 3rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    color: #fff;
 }
