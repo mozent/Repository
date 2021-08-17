@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 * {
     padding: 0;
@@ -10,10 +11,15 @@
     font-family: 'Roboto', sans-serif;
 }
 
+[class*='-img']{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
 .wrapper {
     width: 70%;
     margin: auto;
 }
+
 .hero-wrapper {
     height: 95vh;
     position: relative;
@@ -111,7 +117,7 @@ nav li:first-child a {
     padding: 0 .4rem;  /* custom */
 }
 
-.specifics {
+.specifies {
     margin-top: 4rem;
 }
 
@@ -126,7 +132,7 @@ nav li:first-child a {
     font-weight: 500;
 }
 
-.specifics h1 {
+.specifies h1 {
     font-size: 1.9rem;
     margin-bottom: .5rem;
 }
@@ -197,4 +203,109 @@ nav li:first-child a {
     text-transform: uppercase;
     border: 1px solid #fff;
     color: #fff;
+}
+
+.spec-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.work {
+    margin-bottom: 8rem;
+}
+
+.work-grid {
+    margin-top: 8rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.work-desc {
+    padding-left: 30%;
+    padding-right: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+}
+
+.work-desc h1,
+.about-text h1,
+.testimonials {
+    font-size: 1.9rem;
+    margin-bottom: .5rem;
+}
+
+.work-desc p,
+.about-text p {
+    font-size: .8rem;
+    line-height: 1.7rem;
+    margin-bottom: 1rem;
+}
+
+.work-desc p + p {
+    margin-bottom: 4rem;
+}
+
+.work-desc button {
+    background: transparent;
+    padding: .8rem 3rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 1px solid #ccc;
+    color: #4a4a4a;
+}
+
+.about {
+    height: 80vh;
+    margin-bottom: 9rem;
+}
+
+.about-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-column-gap: 10%;
+}
+
+.about-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 30%;
+}
+
+.about-img {
+    background-image: url(../img/3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-text small {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Dancing Script';
+}
+
+.testimonials {
+    padding-left: 15%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.slider {
+    margin-top: 3.2rem;
+    padding: 1rem 0rem;
+}
+
+.single-slider {
+    margin: 1.2rem;
+    margin-right: 2.3rem;
+    padding: 1.7rem;
+    background: #fff;
+    box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
