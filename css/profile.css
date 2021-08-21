@@ -152,6 +152,7 @@ nav li:first-child a {
 .spec-item h2 {
     font-size: 1.3rem;
     margin-bottom: .5rem;
+    text-shadow: 1px 1px #d3d3d3;
 }
 
 .spec-item p {
