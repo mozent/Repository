@@ -137,9 +137,7 @@ a {
     padding: 1px;
     margin: 0 2px;    
 }
-.search input[type=text] {
-    width: 137px;
-}
+
 .search input[type=button] {
     padding: 0px 4px;
     background: var(--main-color);
@@ -322,5 +320,17 @@ ul.submenu > li:hover {
         justify-content: left;
         align-items: center;        
         flex-direction: row;
+    }
+
+    .search input[type=text] {
+        width: 137px;
+    }
+}
+
+
+@media only screen and (max-width: 460px) {
+
+    .search input[type=text] {
+        width: 127px;
     }
 }
