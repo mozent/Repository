@@ -86,7 +86,7 @@ a {
     padding: 2px 4px;    
 }
 
-.sidebar-menu ul li span.las:hover {
+.sidebar-menu ul li span.material-icons:hover {
     color: tomato;
 }
 
