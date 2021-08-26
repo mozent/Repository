@@ -137,9 +137,9 @@ a {
     padding: 1px;
     margin: 0 2px;    
 }
-.search input[type=text] {
+/* .search input[type=text] {
     width: 120px;
-}
+} */
 .search input[type=button] {
     padding: 0px 4px;
     background: var(--main-color);
