@@ -134,10 +134,10 @@ a {
 .search input {
     outline: none;
     border: 1px solid var(--main-color);
-    padding: 1px 4px;
-    margin: 0 2px;
-    
+    padding: 1px;
+    margin: 0 2px;    
 }
+
 .search input[type=button] {
     padding: 0px 4px;
     background: var(--main-color);
