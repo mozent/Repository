@@ -311,7 +311,7 @@ ul.submenu > li:hover {
     }
 
     .footer { 
-        top: calc(100% - 28px);
+        /* top: calc(100% - 28px); */
         height: 28px;        
     }
     .search {
