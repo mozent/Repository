@@ -274,7 +274,7 @@ ul.submenu > li:hover {
     }
     
     .footer { 
-        /* top: calc(100% - 28px); */
+        top: calc(100% - 28px);
         height: 28px;
     }
 
@@ -282,6 +282,7 @@ ul.submenu > li:hover {
         display: flex;
         justify-content: left;
         align-items: center;
+        flex-direction: row;
     }
 }
 @media only screen and (max-width: 560px) {
@@ -311,8 +312,8 @@ ul.submenu > li:hover {
     }
 
     .footer { 
-        /* top: calc(100% - 28px); */
-        height: 28px;        
+        top: calc(100% - 28px);
+        height: 28px;
     }
     .search {
         display: flex;
