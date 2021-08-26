@@ -64,6 +64,10 @@ a {
 } 
 
 .sidebar-User {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    flex-wrap: nowrap;
     background-color: #ACA45B;
     border-bottom: 1px solid #e7e7e7;
     padding: 2px 4px;
