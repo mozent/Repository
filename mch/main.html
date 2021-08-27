@@ -12,7 +12,7 @@
     <title>門諾醫院-MyEIP</title>
 </head>
 <body >
-    <div class="logo top"></div>
+    <div class="visible" id="logo"></div>
     <div class="sidebar-toggle">
         <h2>
             <label for="nav-toggle">
@@ -23,13 +23,13 @@
         </h2>
     </div>
     <div id="leftnav" class="slide left">
-        <input type="checkbox" name="" id="nav-toggle">
+        <input type="checkbox" name="nav-toggle" id="nav-toggle" checked=false>
         <div class="sidebar">
             <div class="sidebar-User">
                 <span>2021/08/26 星期四</span><span>使用者:吳志仁</span>
             </div>
-            <div class="sidebar-menu">
-                <ul>
+            <div class="sidebar-menu">                
+                <ul class="accordion notes-menu">
                     <li><a class="active" href="">                        
                             <span>員工訂餐系統</span>
                         </a>
@@ -83,26 +83,52 @@
     </div>
     <div class="main">
         <header>
-            <ul class="navigation">
-                <li><span>使用手冊  </span>
-                    <ul class="submenu">
-                        <li><a href="https://notestest2.mch.org.tw/HIS_DOC/IPO_ICD10.pdf">住院醫令手術ICD-10及tw-DRG相關作業</a></li>
-                        <li><a href="https://notestest2.mch.org.tw/HIS_DOC/心導管室ICD-10-PCS編碼作業.pdf">心導管室ICD-10-PCS編碼作業</a></li>
-                        <li><a href="https://notestest2.mch.org.tw/HIS_DOC/放射科ICD-10-PCS編碼作業.pdf">放射科ICD-10-PCS編碼作業</a></li>
-                    </ul> 
-                </li>
-                <li><a href="#about">院內資料庫  </a></li>
-                <li><span>專案團隊</span>
-                    <ul class="submenu">
-                        <li><a href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></li>
-                        <li><a href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></li>
-                        <li><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
-                    </ul> 
-                </li>
-                <li><a href="#expert">個人郵件</a></li>
-                <li><a href="#testimonials">網站地圖</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>        
+                <ul class="navigation">
+                    <li class="header-nav-li"><span >專案團隊</span>
+                        <span class="material-icons">arrow_drop_down</span>
+                        <ul class="submenu">
+                            <li><a  href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                        </ul> 
+                    </li>
+                    <li class="header-nav-li"><span>使用手冊  </span>
+                        <span class="material-icons">arrow_drop_down</span>
+                        <ul class="submenu">
+                            <li><a href="https://notestest2.mch.org.tw/HIS_DOC/IPO_ICD10.pdf">住院醫令手術ICD-10及tw-DRG相關作業</a></li>
+                            <li><a href="https://notestest2.mch.org.tw/HIS_DOC/心導管室ICD-10-PCS編碼作業.pdf">心導管室ICD-10-PCS編碼作業</a></li>
+                            <li><a href="https://notestest2.mch.org.tw/HIS_DOC/放射科ICD-10-PCS編碼作業.pdf">放射科ICD-10-PCS編碼作業</a></li>
+                        </ul> 
+                    </li>
+                    <li class="header-nav-li"><span >專案團隊</span>
+                        <span class="material-icons">arrow_drop_down</span>
+                        <ul class="submenu">
+                            <li><a  href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                        </ul> 
+                    </li>
+                    <li class="header-nav-li"><a href="#about">院內資料庫  </a></li>
+                    <li class="header-nav-li"><span >專案團隊</span>
+                        <span class="material-icons">arrow_drop_down</span>
+                        <ul class="submenu">
+                            <li><a  href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                            <li><a  href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></li>
+                        </ul> 
+                    </li>
+                    <li class="header-nav-li"><a  href="#expert">個人郵件</a></li>
+                    <li class="header-nav-li"><a  href="#testimonials">網站地圖</a></li>
+                    <li class="header-nav-li"><a  href="#contact">Contact</a></li>
+                </ul>
         </header>
         <div class="main-content">
             <section class="banner" id="banner">
@@ -310,20 +336,32 @@
         </div>        
     </div>
     
-
+    
 
 
 
     <script type="text/javascript">
         $( window ).scroll(function() {
-            /*$( "header" ).toggleClass("sticky", function(){
-                console.log($(window).scrollTop);
-                return $(window).scrollTop > 2 ? true : false;
-            });*/
-            //console.log($(window).scrollTop());
-            $( "header" ).attr("class",function(){
-                return $(window).scrollTop() > 0 ? "sticky" : "";
-            });
+            if ($(window).scrollTop() > 0 ) {
+                $( "#logo" ).fadeOut(1000);
+                $( ".sidebar" ).addClass("sticky").fadeIn(1000);
+            }else{
+                $( "#logo" ).fadeIn(1000);
+                $( ".sidebar" ).removeClass("sticky");
+            }
+            
+            $( "header" ).fadeIn(1000).attr("class",function(){
+                    return $(window).scrollTop() > 0 ? "sticky" : "";
+                });
+        });
+        $( window ).resize(function() {
+            //console.log($( window ).width())
+            if ($( window ).width() <= 768){
+                $('ul.navigation').prependTo($(".sidebar-menu"));
+
+            }else{
+                $('ul.navigation').prependTo($("header"));
+            }
         });
     </script>
 </body>
