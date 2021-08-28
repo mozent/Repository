@@ -111,6 +111,7 @@ a {
 }*/
 
 .main {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -124,7 +125,7 @@ a {
 
 .main-content {
     padding-left: 10px;
-    display: none;
+    
 }
 
 .footer {
@@ -355,9 +356,11 @@ input[type=checkbox]#nav-toggle {
         font-size: 1.1rem;
         overflow-y: auto;
     }
+
     .sidebar-menu div.navigation {
         flex-direction: column;
     }
+
     #nav-toggle:checked + .sidebar {
         left: 0 !important;
         z-index: 102;
@@ -392,14 +395,14 @@ input[type=checkbox]#nav-toggle {
     }
 }
 @media only screen and (max-width: 560px) {
-/* 
+
     .sidebar {
         width: 0px;
         transition: 0.5s;
-        font-size: 1rem;
-        overflow: auto;
+        font-size: 1.1rem;
+        overflow-y: auto;
     }
-
+/* 
     .main {
         z-index: 101;
         margin-left: 0px;
@@ -407,7 +410,7 @@ input[type=checkbox]#nav-toggle {
         transition: 0.5s;
     } */
 
-    #nav-toggle:checked ~ .main-content {
+    #nav-toggle:checked ~ .main {
         margin-left: 0rem !important;
     }
 
