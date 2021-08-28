@@ -34,6 +34,7 @@ $(document).ready(function () {
             console.log($(this).outerHeight())
         } else {
             $(this).prev().attr("aria-hidden", "true");
+            $(this).css("display","none");
         }
     });
     $(".accordion").find("h3").on("click", function () {

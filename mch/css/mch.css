@@ -70,6 +70,22 @@ a {
     border-bottom: 1px solid #e7e7e7;
     padding: 2px 4px;
 }
+
+/* jquery UI Accordian  */
+/* .ui-accordion  */
+.ui-accordion-header {
+    background-color: #ACA45B;
+    color: #ffffff;
+}
+.ui-accordion .ui-state-active {
+    border: 1px solid #003eff;
+    background: #007fff77;
+    font-weight: normal;
+    color: #ffffff;
+}
+.ui-accordion .ui-accordion-header{
+    margin: 0;
+}
 /*
 .sidebar-menu div {
     padding: 0;
@@ -193,13 +209,17 @@ div.notes-menu > div.submenu {
     display: none;
     justify-content: space-between;
     flex-direction: column;
-    padding: 4px 12px;
+    padding: 6px 0px;
     background-color: #ACA45B;
-    color: #fff;
-    border: 1px solid #e7e7e7;
+    /* color: #fff; */
+    /* border: 1px solid #e7e7e7; */
     cursor: pointer;
 }
 
+div.navigation > div.submenu span a, 
+div.notes-menu > div.submenu span a {
+    color: #fff;
+}
 
 /* 
 div.navigation h3 span,
@@ -329,12 +349,12 @@ input[type=checkbox]#nav-toggle {
 }
 @media only screen and (max-width: 768px) {
 
-    /* .sidebar {
+    .sidebar {
         width: 0px;
         transition: 0.5s;
         font-size: 1.1rem;
-        overflow: auto;
-    } */
+        overflow-y: auto;
+    }
     .sidebar-menu div.navigation {
         flex-direction: column;
     }
