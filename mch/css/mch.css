@@ -20,6 +20,10 @@
 
 body {
     height: 1000px;
+    color: #222;
+    background-color: #fbfcfd;
+    background-image: url(../img/background.png);
+    background-repeat: repeat-x;
 }
 
 a {
@@ -36,14 +40,13 @@ a {
     z-index: 200;
 }
 
-
 .sidebar-toggle {
     z-index: 201;
 }
 
 .sidebar {
     display: block;
-    width: 163px;
+    width: 220px;
     position: absolute;
     left: 0;
     top: 44px;
@@ -75,6 +78,10 @@ a {
 /* .ui-accordion  */
 .ui-accordion-header {
     background-color: #ACA45B;
+}
+.ui-accordion-header span,
+.sidebar h3.ui-accordion-header > span > a,
+h3.ui-accordion-header > span > a:link {
     color: #ffffff;
 }
 .ui-accordion .ui-state-active {
@@ -100,9 +107,6 @@ a {
     padding: 2px 4px;    
 }
 
-.sidebar-menu div h3 span.material-icons:hover {
-    color: tomato;
-}
 */
 /*.sidebar-menu ul li span.las {
     position: relative;
@@ -111,21 +115,20 @@ a {
 }*/
 
 .main {
-    display: none;
     position: absolute;
     top: 0;
     left: 0;
     margin-top: 44px;
-    margin-left: 163px;
-    width: calc(100% - 163px);
+    margin-left: 220px;
+    width: calc(100% - 220px);
     font-family: '新細明體', sans-serif;
     /* height: calc(100% - 58px); */
     transition: margin-left 500ms;
 }
 
 .main-content {
-    padding-left: 10px;
-    
+    /* display: none; */
+    padding-left: 10px;    
 }
 
 .footer {
@@ -186,17 +189,42 @@ div.navigation > h3 {
     cursor: pointer;
     flex-wrap: nowrap;
     white-space: nowrap;
+    font-weight: normal;
+    font-size: 100%;
 }
 
-div.navigation > div.header-nav {
+div.navigation > div.header-nav {    
     display: none;
-
 }
 
+div.navigation h3,
+div.navigation h3 span a {
+    background-color: #ACA45B;
+    color: #fff;
+}
+
+.material-icons:hover,
+.sidebar h3:hover,
+.sidebar h3 span a:hover,
+div.navigation h3:hover,
+div.navigation h3 span a:hover {
+    color: var(--color-pinkRed);
+}
+
+/*div.navigation h3:hover div.navigation > div.submenu
+ div.navigation h3 div.submenu:hover*/
+ div.navigation > div.submenu.show-submenu {
+    display: flex;
+    position: absolute;
+    top: 21px;
+    left: 6px;    
+    flex-wrap: nowrap;
+    z-index: 99;
+}
 div.header-nav,
 div.notes-menu > h3 {
     display: flex;
-    justify-content: space-between;
+    justify-content: inherit;
     flex-direction: row;
     justify-items: center;
     padding: 4px 12px;
@@ -211,14 +239,28 @@ div.notes-menu > div.submenu {
     justify-content: space-between;
     flex-direction: column;
     padding: 6px 0px;
-    background-color: #ACA45B;
+    /* background-color: #ACA45B; */
     /* color: #fff; */
     /* border: 1px solid #e7e7e7; */
     cursor: pointer;
 }
+div.navigation > div.submenu {
+    background-color: #ACA45B;
+}
 
-div.navigation > div.submenu span a, 
+div.notes-menu > div.submenu{
+    background-color: #fff;    
+}
+
 div.notes-menu > div.submenu span a {
+    color: var(--color-dark);
+}
+
+div.notes-menu > div.submenu span a:hover {
+    color: var(--color-pinkRed);
+}
+
+div.navigation > div.submenu span a {
     color: #fff;
 }
 
@@ -328,6 +370,10 @@ input[type=checkbox]#nav-toggle {
     visibility: hidden;
 }
 
+h3 > .material-icons {
+    right: 10px;
+    position: absolute;
+}
 /*
 [aria-hidden=false] {
     display: block;
@@ -344,6 +390,25 @@ input[type=checkbox]#nav-toggle {
 .main {
     /* display: none; */
 }
+.btn {
+    display: inline-block;
+    color: #000000;
+    font-family: 新細明體;
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: #8FA0D1;
+    cursor: hand;
+    border-right: 1px solid #C4BAAE;
+    border-bottom: 1px solid #C4BAAE;
+    padding: 2px 6px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    letter-spacing: 6px;
+}
 
 @media only screen and (max-width: 1200px) {
     
@@ -357,10 +422,6 @@ input[type=checkbox]#nav-toggle {
         overflow-y: auto;
     }
 
-    .sidebar-menu div.navigation {
-        flex-direction: column;
-    }
-
     #nav-toggle:checked + .sidebar {
         left: 0 !important;
         z-index: 102;
@@ -371,12 +432,12 @@ input[type=checkbox]#nav-toggle {
         margin-left: 0rem !important;
     }
 
-    /* .main {
+    .main {
         z-index: 101;
         margin-left: 0px;
         background: #fff;
         transition: 0.5s;
-    } */
+    }
 
     .sidebar-toggle {
         display: inline-block;
@@ -402,13 +463,13 @@ input[type=checkbox]#nav-toggle {
         font-size: 1.1rem;
         overflow-y: auto;
     }
-/* 
+
     .main {
         z-index: 101;
         margin-left: 0px;
         background: #fff;
         transition: 0.5s;
-    } */
+    }
 
     #nav-toggle:checked ~ .main {
         margin-left: 0rem !important;
