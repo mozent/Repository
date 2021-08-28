@@ -38,7 +38,6 @@ $(document).ready(function () {
     });
     $(".accordion").find("h3").on("click", function () {
         if ($(this).attr("aria-hidden") == "false") {
-            //$(".accordion").accordion( "refresh" );
             $(this).next().removeAttr("style");
             $(this).next().css("display", "flex");
         } else {

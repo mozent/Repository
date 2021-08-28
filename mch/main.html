@@ -384,10 +384,12 @@
         $(window).resize(function () {
             //console.log($( window ).width())
             if ($(window).width() <= 768) {
-                $('ul.navigation').prependTo($(".sidebar-menu"));
-
+                $('div.navigation').prependTo($(".sidebar-menu"));
+                $( ".accordion" ).accordion({
+                    heightStyle: "content"
+                });
             } else {
-                $('ul.navigation').prependTo($("header"));
+                $('div.navigation').prependTo($("header"));
             }
         });
     </script>
