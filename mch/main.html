@@ -299,7 +299,9 @@
         $(window).scroll(function () {
             if ($(window).scrollTop() > 0) {
                 $("#logo").fadeOut(500);
-                $(".sidebar").addClass("sticky").fadeIn(1000);
+                $(".sidebar").removeClass("sticky")
+                               .css("top", $(".toggle-container").outerHeight())
+                                 .fadeIn(1000);
                 $("header").css("left", $(".sidebar").outerWidth())
                     .css("top", 0)
                     .css('opacity', 0)
@@ -307,7 +309,7 @@
                     
             } else {
                 $("#logo").fadeIn(1000);
-                $(".sidebar").removeClass("sticky").fadeIn(1000);
+                $(".sidebar").addClass("sticky").fadeIn(1000);
                 $("header").css("left", $(".sidebar").outerWidth())
                     .css("top", $(".sidebar").position().top)
                     .css('opacity', 0)
