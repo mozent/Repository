@@ -9,10 +9,43 @@
     <script src="./js/jquery-1.12.4.js"></script>
     <script src="./js/App.js"></script>
     
+        <style type="text/css">
+        .altColor{
+        background-color:red;
+        }
+        </style>
 </head>
 <body>
+    <div class="tumble" style="cursor:hand;border:1px solid #786;">Some text.</div>
     <button role="button" id="id_1" class="Buttonid_1"> Buttonid_1</button>
     <button role="button" id="id_2" class="Buttonid_1"> Buttonid_2</button>
     <button role="button" id="id_3" class="Buttonid_1"> Buttonid_3</button>
+    <script>
+        $( "div.tumble" ).on('click',function(){
+        //console.log(10);
+            $(this).toggleClass( "altColor" );
+            //console.log(1);
+        });
+        function f(){
+            f.prototype.a = 1;
+            this.b = function(){
+                return this.a;
+            }
+        }
+        var e = new f();
+        var g = new f();
+        console.log(e.a);
+        console.log(g.a);
+
+        
+        f.prototype.a =2;
+        console.log(e.a);
+        console.log(g.a);
+        console.log( typeof e.b());
+        console.log( typeof f);
+        console.log( e.b);
+
+
+        </script>
 </body>
 </html>
