@@ -10,6 +10,12 @@ $(document).ready(function () {
         /* $("#sidebar-toggle").prop("checked","false");
         $("#menu-toggle").prop("checked","false");
         console.log("clone..."+$("#menu-toggle").attr("checked")) */
+        $(".sidebar-toggle").on("click",function(){
+            $("#menu-toggle").prop("checked",false);
+        });
+        $(".menu-toggle").on("click",function(){
+            $("#sidebar-toggle").prop("checked",false);
+        });
     })();
     initialize.accordion.run();
     initialize.layout.redraw();
@@ -129,12 +135,12 @@ var initialize = {
                 console.log("大於768 >>window.width= " + this.width);                
             }
         }
-    },
+    }/* ,
     reDraw_element : function (no) {
             //設定內容位置
             $('.main-content').css("margin-top", $("header").outerHeight());
             return no;
-        }
+        } */
     
 }
 

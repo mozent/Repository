@@ -377,7 +377,7 @@ input[type=checkbox]#menu-toggle {
 
 .sticky {
     position: fixed;
-    top: 0;
+    top: 33px;
     left: 0;
 }
 
