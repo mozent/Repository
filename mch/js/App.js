@@ -42,6 +42,7 @@ var initialize = {
                     $("#sidebar-toggle").prop("checked",false);
 
                 }); */
+
                 console.log("resize........")
           }
     },
@@ -110,9 +111,7 @@ var initialize = {
                 console.log($(this).position().left + "px");
                 $(this).toggleClass("visible");
             });
-            //set footer
-            console.log("小於768 >>window.width= " + this.width);
-            $(".footer").css("top", this.height - $(".footer").outerHeight());
+            
             //set menu-container postion
             $(".menu-container").css("top",
                         $(".toggle-container").position().bottom);
