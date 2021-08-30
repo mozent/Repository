@@ -298,10 +298,7 @@
     <script type="text/javascript">
         $(window).scroll(function () {
             if ($(window).scrollTop() > 0) {
-                $("#logo").fadeOut(500);
-                $(".sidebar").removeClass("sticky")
-                               .css("top", $(".toggle-container").outerHeight())
-                                 .fadeIn(1000);
+                $("#logo").fadeOut(500);                
                 $("header").css("left", $(".sidebar").outerWidth())
                     .css("top", 0)
                     .css('opacity', 0)
@@ -309,37 +306,18 @@
                     
             } else {
                 $("#logo").fadeIn(1000);
-                $(".sidebar").addClass("sticky").fadeIn(1000);
                 $("header").css("left", $(".sidebar").outerWidth())
                     .css("top", $(".sidebar").position().top)
                     .css('opacity', 0)
                     .animate({ "opacity": 1 }, 1000);
-            }
-            if ($(window).width()>=768){
-/*                 $("header").css("left", function () {
-                                            return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
-                                        }).css("top", function () {
-                                            return $(window).scrollTop() > 0 ? "0px" : "44px";
-                                        }).css('opacity', 0)
-                                            .animate({ "opacity": 1 }, 1000); */
-            }else{
-                /* $(".toggle-container").css("display","flex")
-                                        .css("z-index",300)
-                                        .css("left", function () {
-                                                return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
-                                            }).css("top", function () {
-                                                return $(window).scrollTop() > 0 ? "0px" : "44px";
-                                            }).css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000);
-                $(".menu-container").css("z-index",101)
-                                        .css("top", function () {
-                                                return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
-                                            }).css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000); */
-                                    
-            }
-            
+            }            
             initialize.layout.redraw();               
+        });
+        $(window).resize(function(){
+            console.log("$(window).resize()")
+            initialize.init.resize();
+            initialize.accordion.run();
+            initialize.layout.redraw();
         });
     </script>
 </body>

@@ -7,14 +7,16 @@ $(document).ready(function () {
         var _accordion2 = "<div id='accordion_menu'></div>";
         $(_accordion2).prependTo(".menu-container");
         $('div.navigation>.header-nav').clone().appendTo($("#accordion_menu"));
-        /* $("#sidebar-toggle").prop("checked","false");
-        $("#menu-toggle").prop("checked","false");
-        console.log("clone..."+$("#menu-toggle").attr("checked")) */
         $(".sidebar-toggle").on("click",function(){
             $("#menu-toggle").prop("checked",false);
+            $(".menu-toggle").removeClass("selected-menu-toggle"); // 
+            console.log($(".toggle-container").position().top + $(".toggle-container").outerHeight());
+            //$(".sidebar").css("position","fixed"); //.css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
         });
         $(".menu-toggle").on("click",function(){
+            $(this).toggleClass("selected-menu-toggle");
             $("#sidebar-toggle").prop("checked",false);
+
         });
     })();
     initialize.accordion.run();
@@ -22,6 +24,27 @@ $(document).ready(function () {
 });
 
 var initialize = {
+    init: {
+            resize: function () {
+                /* $(".sidebar-menu").attr("id","accordion");
+                //clone header children to BottomBar Menu
+                var _accordion2 = "<div id='accordion_menu'></div>";
+                $(_accordion2).prependTo(".menu-container");
+                $('div.navigation>.header-nav').clone().appendTo($("#accordion_menu"));
+                $(".sidebar-toggle").on("click",function(){
+                    $("#menu-toggle").prop("checked",false);
+                    $(".menu-toggle").removeClass("selected-menu-toggle"); // 
+                    console.log($(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                    //$(".sidebar").css("position","fixed"); //.css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                });
+                $(".menu-toggle").on("click",function(){
+                    $(this).toggleClass("selected-menu-toggle");
+                    $("#sidebar-toggle").prop("checked",false);
+
+                }); */
+                console.log("resize........")
+          }
+    },
     accordion : {
         renderTo : {
             id:new Array("#accordion","#accordion_menu")
@@ -73,7 +96,6 @@ var initialize = {
     layout : {
         width: $(window).width(),
         height: $(window).height(),
-        scrollTop: $(window).scrollTop(),  
         redraw: function () {
             $('div.navigation').find('h3').hover(function () {
                 if ($(this).next().hasClass("submenu")) {
@@ -96,26 +118,27 @@ var initialize = {
                         $(".toggle-container").position().bottom);
             //判斷視窗大小，將header hidden，show menu bar 
             if (this.width <= 768) {
-                //
-                
                 //header 消失後,計算 toggle container的高度
-                $('header').hide(500);
-                console.log("this.scrollTop= " + this.scrollTop);
+                $('header').hide(500);                
                 console.log("this.scrollTop= " + $(window).scrollTop());
                 $(".toggle-container").css("display","flex")
                                         .css("z-index",300)
                                         .css("top", function () {
                                                 return $(window).scrollTop() > 0 ? 0 : "44px";
-                                            }).css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000);
+                                            }); /*.css('opacity', 0)
+                                                .animate({ "opacity": 1 }, 1000);*/
                 $(".menu-container").css("z-index",101)
                                         .css("top", function () {
                                                 return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
-                                            }).css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000);
+                                            });
                 //     ============
-                
-                console.log("小於768 >>window.width= " + this.width);
+                $(".sidebar").css("top",$(".toggle-container").position().top + $(".toggle-container").outerHeight()+1); //.fadeIn(1000);
+                $(".main").css("margin-top",$(".toggle-container").position().top + $(".toggle-container").outerHeight()+1);
+                                
+                $(".footer").css("display",function () {
+                                                return $(window).scrollTop() > $(window).height()/4 ? "none":"flex";
+                                            });
+                console.log("小於768 >>window.width= " + this.width + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
             } else {
                 /* $(".header-nav").prependTo($('div.navigation'), function () {
                     $(".accordion").accordion({

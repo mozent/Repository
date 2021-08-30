@@ -4,6 +4,7 @@
     --main-color: #aca45b;
     --color-pinkRed: #DD2F6E;
     --color-dark: #1D2231;
+    --color-background: #e7e7e7;
     --text-grey: #8390A2;
     --text-greydark: #4a4a4a; 
 }
@@ -47,7 +48,7 @@ a {
 .sidebar {
     display: block;
     width: 220px;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 44px;
     height: 100%;
@@ -328,18 +329,29 @@ div.submenu > span:hover {
     right: 40px;
     top: 0px;
 }
+
+.sidebar-toggle h2 label:hover,
+.menu-toggle:hover {
+    background-color: #7c7a63a8;    
+}
+
 .menu-toggle h2 label {
-    /* background: var(--color-dark); */
     padding: 0 0.4rem;
-    margin: 0 0.6rem;
-    height: 28px;
-    width: 32px;
-    border-radius: 8%;
+    /* margin: 0 0.6rem; */
+    height: 32px;
+    width: 108px;
+    /* border-radius: 8%; */
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center !important;
     cursor: pointer;
+    font-size: 80%;
+}
+
+.selected-menu-toggle, .selected-menu-toggle h2 label {
+    color:black;
+    background: var(--color-background);
 }
 
 .sidebar-toggle h2 label {
@@ -356,10 +368,6 @@ div.submenu > span:hover {
     cursor: pointer;
 }
 
-.sidebar-toggle h2 label:hover,
-.menu-toggle:hover {
-    background-color: #7c7a63a8;    
-}
 
 .search input[type=text] {
     width: 200px;
@@ -372,7 +380,8 @@ div.submenu > span:hover {
 
 input[type=checkbox]#sidebar-toggle,
 input[type=checkbox]#menu-toggle {
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
 
 .sticky {
@@ -455,7 +464,7 @@ h3 > .material-icons {
 
 #accordion_menu {
     position: relative;
-    top: 36px;
+    top: 6px;
     margin: 40px;
 } 
 
@@ -471,6 +480,7 @@ h3 > .material-icons {
 section {
     display: none;
 }
+
 @media only screen and (max-width: 1200px) {
     
 }
