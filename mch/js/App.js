@@ -12,13 +12,21 @@ $(document).ready(function () {
             $(".menu-toggle").removeClass("selected-menu-toggle"); // 
             console.log($(".toggle-container").position().top + $(".toggle-container").outerHeight());
             //$(".sidebar").css("position","fixed"); //.css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+            $(".menu-toggle").find(".material-icons").removeClass("flip");
+            $(".sidebar").css("display","");
         });
         $(".menu-toggle").on("click",function(){
             $(this).toggleClass("selected-menu-toggle");
             $("#sidebar-toggle").prop("checked",false);
             $(this).find(".material-icons").toggleClass("flip");
-
+            
         });
+        $(".main").click(function(event) { 
+            var $target = $(event.target);
+            if($('.sidebar').is(":visible")) {
+              $('.sidebar').hide();
+            }        
+          });
     })();
     initialize.accordion.run();
     initialize.layout.redraw();

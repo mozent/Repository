@@ -17,7 +17,7 @@
     text-decoration: none;
     list-style-type: none;
     scroll-behavior: smooth;
-    font-family: '新細明體', 'Poppins', sans-serif;
+    font-family: '微軟正黑體', '新細明體', 'Poppins', sans-serif;
 }
 
 body {
@@ -40,11 +40,11 @@ a {
     color: transparent;
     width: 100%;
     height: 44px;
-    z-index: 200;
+    z-index: 100;
 }
-.sidebar-toggle {
+/* .sidebar-toggle {
     z-index: 201;
-}
+} */
 
 .sidebar {
     display: block;
@@ -55,6 +55,7 @@ a {
     height: 100%;
     background: #F7F7F9;
     transition: width 500ms;
+    z-index: 201;
 }
  /*
  .sidebar-menu * , */
@@ -425,33 +426,32 @@ h3 > .material-icons {
 .main {
     /* display: none; */
 }
-.btn {
+.tabBar a.btn {
     display: inline-block;
     color: #000000;
-    font-family: 新細明體;
-    font-size: 10pt;
+    font-size: 1.1rem;
     font-weight: normal;
     background-color: #8FA0D1;
     cursor: hand;
     border-right: 1px solid #C4BAAE;
     border-bottom: 1px solid #C4BAAE;
-    padding: 2px 6px;
+    padding: 6px 4px;
     text-decoration: none;
     letter-spacing: 2px;
     transition: 0.5s;
 }
 
-.btn:hover {
-    letter-spacing: 6px;
+.tabBar a.btn:hover {
+    letter-spacing: 3px;
 }
 
 .menu-container {
     width: 100%;
     position: fixed;
     display: none;
-    background-color: #e7e7e7;
+    background-color: var(--color-background);
     padding-top: 0px;
-    z-index: 111;
+    z-index: 101;
     width: 100%;
     top: 76px;
 }
@@ -485,11 +485,12 @@ h3 > .material-icons {
     top: 44px;
     background-color: var(--main-color);
     width: 100%;
-    z-index: 300;
+    z-index: 101;
 }
 section {
     display: none;
 }
+
 /*------------ / mobile_menu ------------*/
 
 @media screen and (max-width: 1280px) {
@@ -509,7 +510,6 @@ section {
 
     #menu-toggle:checked + .menu-container {
         display: block;
-        z-index: 102;
     }
 
     #menu-toggle:checked ~ .main {
@@ -518,7 +518,6 @@ section {
 
     #sidebar-toggle:checked + .sidebar {
         left: 0 !important;
-        z-index: 102;
         width: 360px;
     }
     
@@ -527,10 +526,8 @@ section {
     }
 
     .main {
-        z-index: 101;
         margin-left: 0px;
         background: #fff;
-        /* transition: 0.5s; */
         width: 100%;
     }
 
@@ -561,7 +558,6 @@ section {
     }
 
     .main {
-        z-index: 101;
         margin-left: 0px;
         background: #fff;
         transition: 0.5s;
@@ -569,22 +565,6 @@ section {
 
     #sidebar-toggle:checked ~ .main {
         margin-left: 0rem !important;
-    }
-/* 
-    .sidebar-toggle {
-        position: fixed;
-        right: 2px;
-        top: 6px;
-    } */
-
-    /* .menu-toggle {
-        position: fixed;
-        right: 2px;
-        bottom: 6px;
-    } */
-
-    .sidebar-toggle h3 label {
-        /* border: 1px solid #e7e7e7; */
     }
 
     .search input[type=text] {
