@@ -16,6 +16,7 @@ $(document).ready(function () {
         $(".menu-toggle").on("click",function(){
             $(this).toggleClass("selected-menu-toggle");
             $("#sidebar-toggle").prop("checked",false);
+            $(this).find(".material-icons").toggleClass("flip");
 
         });
     })();

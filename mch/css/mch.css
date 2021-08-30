@@ -4,7 +4,8 @@
     --main-color: #aca45b;
     --color-pinkRed: #DD2F6E;
     --color-dark: #1D2231;
-    --color-background: #e7e7e7;
+    --color-background: #f6f6f6;
+    --color-sidebar-background: #eee;
     --text-grey: #8390A2;
     --text-greydark: #4a4a4a; 
 }
@@ -36,11 +37,11 @@ a {
     position: fixed;
     background: url(../img/banner-a-e.jpg);
     background-repeat: no-repeat;
+    color: transparent;
     width: 100%;
     height: 44px;
     z-index: 200;
 }
-
 .sidebar-toggle {
     z-index: 201;
 }
@@ -122,7 +123,7 @@ a {
     margin-top: 44px;
     margin-left: 220px;
     width: calc(100% - 220px);
-    font-family: '新細明體', sans-serif;
+    font-family: '微軟正黑體', '新細明體', sans-serif;
     /* height: calc(100% - 58px); */
     transition: margin-left 500ms;
 }
@@ -331,12 +332,12 @@ div.submenu > span:hover {
     top: 0px;
 }
 
-.sidebar-toggle h2 label:hover,
+.sidebar-toggle h3 label:hover,
 .menu-toggle:hover {
     background-color: #7c7a63a8;    
 }
 
-.menu-toggle h2 label {
+.menu-toggle h3 label {
     padding: 0 0.4rem;
     /* margin: 0 0.6rem; */
     height: 32px;
@@ -347,15 +348,15 @@ div.submenu > span:hover {
     align-items: center;
     justify-content: center !important;
     cursor: pointer;
-    font-size: 80%;
+    font-size: 100%;
 }
 
-.selected-menu-toggle, .selected-menu-toggle h2 label {
+.selected-menu-toggle, .selected-menu-toggle h3 label {
     color:black;
     background: var(--color-background);
 }
 
-.sidebar-toggle h2 label {
+.sidebar-toggle h3 label {
     background: var(--main-color);
     padding-right: 0rem;
     margin-right: 1rem;
@@ -463,6 +464,14 @@ h3 > .material-icons {
     width: 32px;
 }
 
+.flip {
+    color: var(--color-pinkRed);
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
 #accordion_menu {
     position: relative;
     top: 6px;
@@ -481,8 +490,12 @@ h3 > .material-icons {
 section {
     display: none;
 }
+/*------------ / mobile_menu ------------*/
 
-@media only screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
+
+}
+@media only screen and (max-width: 1100px) {
     
 }
 @media only screen and (max-width: 768px) {
@@ -570,7 +583,7 @@ section {
         bottom: 6px;
     } */
 
-    .sidebar-toggle h2 label {
+    .sidebar-toggle h3 label {
         /* border: 1px solid #e7e7e7; */
     }
 
