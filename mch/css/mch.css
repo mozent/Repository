@@ -340,7 +340,7 @@ div.submenu > span:hover {
     align-items: center;
     justify-content: center !important;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 88%;
 }
 
 .selected-menu-toggle, .selected-menu-toggle h3 label {
