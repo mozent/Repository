@@ -33,7 +33,11 @@ var initialize = {
                 $("#sidebar-toggle").prop("checked",false);
 
             }); */
-
+            /* if ($(window).width() <= 768) {
+                
+            }else{
+                $("header").show(500);
+            } */
             
         },
         fireEventListener: function () {

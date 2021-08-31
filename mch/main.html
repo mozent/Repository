@@ -309,7 +309,7 @@
         $(window).scroll(function () {
             $('.sidebar').css("top", function () {
                     return $(window).scrollTop() > 0 ? "0px" : "44px";
-                }).show(500);
+                });
             if ($(window).scrollTop() > 0) {
                 $("#logo").fadeOut(500);                
                 $("header").css("left", $(".sidebar").outerWidth())
@@ -323,8 +323,13 @@
                     .css("top", $(".sidebar").position().top)
                     .css('opacity', 0)
                     .animate({ "opacity": 1 }, 1000);                
-            }            
-            $(".main-content").css("margin-top", $(window).scrollTop() + $("header").position().top );
+            }    
+            if ($(window).width() <= 768) {
+                $(".main-content").css("margin-top", $(window).scrollTop() + $(".toggle-container").position().top );
+            }else{
+                $(".main-content").css("margin-top", $(window).scrollTop() + $("header").position().top );
+            }
+            
 
             //initialize.layout.redraw();               
         });
