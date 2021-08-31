@@ -51,7 +51,7 @@ a {
     width: 220px;
     position: fixed;
     left: 0;
-    top: 50px;
+    top: 43px;
     height: 100%;
     background: #F7F7F9;
     /* transition: width 500ms; */
@@ -465,7 +465,7 @@ h3 > .material-icons {
 }
 
 .sidebar-close {
-    height: 50px;
+    height: 42px;
     width: 100%;
     border: 1px solid var(--color-background);
     background: var(--color-background);
@@ -473,7 +473,7 @@ h3 > .material-icons {
 
 .sidebar-close h3 {
     position: relative;
-    top: 10px;
+    top: 6px;
 }
 
 .sidebar-close h3 span {
