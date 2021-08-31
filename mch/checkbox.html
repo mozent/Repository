@@ -18,7 +18,17 @@
             </label>
         </h2>
     </div>
+    <span class="span">
+        menu
+    </span>
     <input type="checkbox" name="bottombar-toggle" id="bottombar-toggle" > <!-- sidebar-toggle -->
-
+<script>
+    $(document).ready(function(){
+    $(window).resize(function() {
+        wdth=$(window).width();
+      $(".span").text(wdth);
+    });
+});
+</script>
 </body>
 </html>

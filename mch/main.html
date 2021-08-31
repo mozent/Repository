@@ -40,7 +40,7 @@
     </div>    
     <div class="main">
         <input type="checkbox" name="menu-toggle" id="menu-toggle">
-        <div class="menu-container">            
+        <div class="menu-container">              
             <div class="menu-container-close hidden">
                 <h3>
                     <span class="material-icons">
@@ -321,12 +321,13 @@
                     .css('opacity', 0)
                     .animate({ "opacity": 1 }, 1000);
             }            
-            initialize.layout.redraw();               
+            //initialize.layout.redraw();               
         });
         $(window).resize(function(){
             console.log("$(window).resize()")
+            //$(".width").val($(window).width())
             initialize.init.resize();
-            initialize.accordion.run();
+            //initialize.accordion.run();
             initialize.layout.redraw();
         });
     </script>

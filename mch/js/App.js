@@ -34,7 +34,7 @@ var initialize = {
 
             }); */
 
-            console.log("resize........")
+            
         },
         fireEventListener: function () {
             $(".sidebar-toggle").on("click", function () {
@@ -103,7 +103,7 @@ var initialize = {
         run: function () {
             //menu > accordion
             for (var i = 0; i < this.renderTo.id.length; i++) {
-                console.log(this.renderTo.id[i])
+                //console.log(this.renderTo.id[i])
                 $(this.renderTo.id[i]).addClass(this.display[i])
                     .addClass(this.classList.getAt(i));
                 $(this.renderTo.id[i]).find("div").each(function () {
@@ -128,7 +128,7 @@ var initialize = {
                 $(this.renderTo.id[i]).accordion({
                     heightStyle: "content", active: false, collapsible: true
                 });
-                console.log(this.renderTo.id[i]);
+                //console.log(this.renderTo.id[i]);
                 $(this.renderTo.id[i]).find("h3").on("click", function () {
                     if ($(this).attr("aria-hidden") == "false") {
                         $(this).next().removeAttr("style");
@@ -155,7 +155,6 @@ var initialize = {
                 $(this).next().removeClass("visible");
             });
             $('div.navigation').find('div.submenu').hover(function () {
-                //console.log($(this).position().left + "px");
                 $(this).toggleClass("visible");
             });
 
@@ -163,7 +162,7 @@ var initialize = {
             $(".menu-container").css("top",
                 $(".toggle-container").position().bottom);
             //判斷視窗大小，將header hidden，show menu bar 
-            if (this.width <= 768) {
+            if ($(window).width() <= 768) {
                 //header 消失後,計算 toggle container的高度
                 $('header').hide(500);
                 //console.log("this.scrollTop= " + $(window).scrollTop());
@@ -184,12 +183,14 @@ var initialize = {
                 $(".footer").css("display", function () {
                     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
                 });
+                $('.sidebar').hide(500);
                 /* $(".sidebar-left").css("top", function () {
                     return $(window).scrollTop() > 0 ? $(window).scrollTop() : 0;
                 });
                 console.log(".sidebar-left-top =" + $(".sidebar-left").position().top + $(".sidebar-left").outerHeight() + $(window).scrollTop());
  */
-                //console.log("小於768 >>window.width= " + this.width + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
+                //console.log("小於768 >>window.width= " + $(window).width() + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
+                console.log("小於768 >>window.width= " + $(window).width());  
             } else {
                 /* $(".header-nav").prependTo($('div.navigation'), function () {
                     $(".accordion").accordion({
@@ -201,12 +202,11 @@ var initialize = {
                     return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
                 }).css("top", function () {
                     return $(window).scrollTop() > 0 ? "0px" : "44px";
-                }).css('opacity', 0)
-                    .animate({ "opacity": 1 }, 1000);
+                }).show(500);
                 //===============
-                $('div.navigation').show(500);
                 $(".toggle-container").hide();
-                //console.log("大於768 >>window.width= " + this.width);                
+                $('.sidebar').show(500);
+                console.log("大於768 >>window.width= " + $(window).width());                
             }
         }
     }
@@ -215,8 +215,9 @@ var initialize = {
 $(".sidebar-toggle").click(function (event) {
     initialize.sidebar_left_click();
 }); */
-$(window).resize(function () {
+/* $(window).resize(function () {
+
     initialize.init.fireEventListener();
-    initialize.accordion.run();
+    //initialize.accordion.run();
     initialize.layout.redraw();
-});
+}); */
