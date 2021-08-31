@@ -178,7 +178,7 @@ var initialize = {
                     });
                 //     ============
                 /* $(".sidebar").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight() + 1); */ //.fadeIn(1000);
-                $(".main").css("margin-top", $(".toggle-container").position().top + $(".toggle-container").outerHeight() + 1);
+                $(".main-content").css("margin-top", $(".toggle-container").position().top);
 
                 $(".footer").css("display", function () {
                     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
@@ -198,6 +198,7 @@ var initialize = {
                     });
                 }); */
                 //============
+                $('.sidebar').show(500);
                 $("header").css("left", function () {
                     return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
                 }).css("top", function () {
@@ -205,9 +206,7 @@ var initialize = {
                 }).show(500);
                 //===============
                 $(".toggle-container").hide();
-                $('.sidebar').css("top", function () {
-                    return $(window).scrollTop() > 0 ? "0px" : "44px";
-                }).show(500);
+                $(".main-content").css("margin-top", $("header").position().top );
                 console.log("大於768 >>window.width= " + $(window).width());                
             }
         }
