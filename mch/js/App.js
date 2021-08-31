@@ -205,7 +205,9 @@ var initialize = {
                 }).show(500);
                 //===============
                 $(".toggle-container").hide();
-                $('.sidebar').show(500);
+                $('.sidebar').css("top", function () {
+                    return $(window).scrollTop() > 0 ? "0px" : "44px";
+                }).show(500);
                 console.log("大於768 >>window.width= " + $(window).width());                
             }
         }
