@@ -37,10 +37,10 @@
                 </label>
             </h3>
         </div>
-    </div>    
+    </div>
     <div class="main">
         <input type="checkbox" name="menu-toggle" id="menu-toggle">
-        <div class="menu-container">              
+        <div class="menu-container">
             <div class="menu-container-close hidden">
                 <h3>
                     <span class="material-icons">
@@ -160,7 +160,7 @@
                 <a href="#" class="btn"> 最新消息 (News) (*) </a>
                 <a href="#" class="btn"> 心靈點滴 (*) </a>
             </div>
-             <section class="contact" id="contact">
+            <section class="contact" id="contact">
                 <div class="title white">
                     <h3 class="titleText"><span>C</span>ontact Us</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
@@ -189,10 +189,10 @@
             </div>
         </div>
     </div>
-    
+
     <div id="left-column">
         <input type="checkbox" name="sidebar-toggle" id="sidebar-toggle">
-        <div class="sidebar-left">                        
+        <div class="sidebar-left">
         </div>
         <div class="sidebar-close hidden">
             <h3>
@@ -302,38 +302,45 @@
                 </div>
             </div>
         </div>
-        
     </div>
-    
+
     <script type="text/javascript">
         $(window).scroll(function () {
-            $('.sidebar').css("top", function () {
-                    return $(window).scrollTop() > 0 ? "0px" : "44px";
-                });
-            if ($(window).scrollTop() > 0) {
-                $("#logo").fadeOut(500);                
-                $("header").css("left", $(".sidebar").outerWidth())
-                    .css("top", 0)
-                    .css('opacity', 0)
-                    .animate({ "opacity": 1 }, 1000);
-                    
-            } else {
-                $("#logo").fadeIn(1000);
-                $("header").css("left", $(".sidebar").outerWidth())
-                    .css("top", $(".sidebar").position().top)
-                    .css('opacity', 0)
-                    .animate({ "opacity": 1 }, 1000);                
-            }    
             if ($(window).width() <= 768) {
-                $(".main-content").css("margin-top", $(window).scrollTop() + $(".toggle-container").position().top );
-            }else{
-                $(".main-content").css("margin-top", $(window).scrollTop() + $("header").position().top );
+                $('.sidebar').css("top", function () {
+                        return $(window).scrollTop() > 0 ? "0px" : "44px";
+                    });
+                if ($(window).scrollTop() > 0) {
+                    
+                    $("#logo").fadeOut(500);
+                    $("header").css("left", $(".sidebar").outerWidth())
+                        .css("top", 0)
+                        .css('opacity', 0)
+                        .animate({ "opacity": 1 }, 1000);
+                    
+                } else {
+                    $("#logo").fadeIn(1000);
+                    $("header").css("left", $(".sidebar").outerWidth())
+                                .css("top", $(".sidebar").position().top)
+                                    .css('opacity', 0)
+                                        .animate({ "opacity": 1 }, 1000);
+                }
+                $(".toggle-container").css("display", "flex")
+                                            .css("z-index", 300)
+                                            .css("top", function () {
+                        return $(window).scrollTop() > 0 ? 0 : "44px";
+                    });
+                //set menu-container postion
+                $(".menu-container").css("top",
+                                            $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                $(".main-content").css("margin-top", $(window).scrollTop() + $(".toggle-container").position().top);
+            } else {
+                $(".main-content").css("margin-top", $(window).scrollTop() + $("header").position().top);
             }
-            
 
             //initialize.layout.redraw();               
         });
-        $(window).resize(function(){
+        $(window).resize(function () {
             console.log("$(window).resize()")
             //$(".width").val($(window).width())
             initialize.init.resize();
