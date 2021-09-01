@@ -28,11 +28,6 @@ var initialize = {
                 //$(".sidebar").css("position","fixed"); //.css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
                 $(".menu-toggle").find(".material-icons").removeClass("flip");
                 $(".sidebar").css("display", "");
-                /* $("#accordion").find("div").each(function () {
-                    if ($(this).hasClass("submenu")) {
-                        $(this).css("display", "flex");
-                    }
-                }); */
                 sidebar_left_click();
             });
             $(".sidebar-left").on("click",function (event) {
@@ -46,11 +41,6 @@ var initialize = {
                 $(this).toggleClass("selected-menu-toggle");
                 $("#sidebar-toggle").prop("checked", false);
                 $(this).find(".material-icons").toggleClass("flip");
-                /* $("#accordion_menu").find("div").each(function () {
-                    if ($(this).hasClass("submenu")) {
-                        $(this).css("display", "flex");
-                    }
-                }); */
             });
             sidebar_left_click = function () {
                 $(".sidebar-left").each( function () {
@@ -67,10 +57,6 @@ var initialize = {
                 });
                 
             }
-
-            /* $(".menu-container-close").on("click",function(){
-                $(".menu-container").toggleClass("hidden");
-            }); */
         },
     },
     accordion: {
@@ -87,22 +73,12 @@ var initialize = {
         run: function () {
             //menu > accordion
             for (var i = 0; i < this.renderTo.id.length; i++) {
-                //console.log(this.renderTo.id[i])
                 $(this.renderTo.id[i]).addClass(this.display[i])
                     .addClass(this.classList.getAt(i));
                 $(this.renderTo.id[i]).find("div").each(function () {
                     if ($(this).hasClass("submenu")) {
                         $(this).prev().attr("aria-hidden", "false");
                         $(this).css("display", "none");
-                        //$(this).removeAttr("style");
-                        //$(this).css("display", "flex")
-                        //.css("visibility", "visible");
-                        //.css("height", $(this).outerHeight())
-
-                        //console.log($(this).outerHeight());
-                        //$(this).css("display", "none");
-                        //if ($(this).outerHeight()>0)
-                        //console.log(this.renderTo.id[i] + "=" +$(this).outerHeight())
                     } else {
                         //aria-hidden :true 隱藏(不開啟)子項目
                         $(this).prev().attr("aria-hidden", "true");
@@ -112,7 +88,6 @@ var initialize = {
                 $(this.renderTo.id[i]).accordion({
                     heightStyle: "content", active: false, collapsible: true
                 });
-                //console.log(this.renderTo.id[i]);
                 $(this.renderTo.id[i]).find("h3").on("click", function () {
                     if ($(this).attr("aria-hidden") == "false") {
                         $(this).next().removeAttr("style");
@@ -128,16 +103,47 @@ var initialize = {
     layout: {
         width: $(window).width(),
         height: $(window).height(),
-        resize: function () {
+        scroll: function () {
             if ($(window).width() <= 768) {
-                // $("#logo").is(":visible")? "":$("#logo").css("display","block");
+                $('.sidebar').css("top", function () {
+                        return $(window).scrollTop() > 0 ? "0px" : "44px";
+                    });
+                if ($(window).scrollTop() > 0) {
+                    
+                    $("#logo").fadeOut(500);
+                    $("header").css("left", $(".sidebar").outerWidth())
+                        .css("top", 0)
+                        .css('opacity', 0)
+                        .animate({ "opacity": 1 }, 1000);
+                    
+                } else {
+                    $("#logo").fadeIn(1000);
+                    $("header").css("left", $(".sidebar").outerWidth())
+                                .css("top", $(".sidebar").position().top)
+                                    .css('opacity', 0)
+                                        .animate({ "opacity": 1 }, 1000);
+                }
+                $(".toggle-container").css("display", "flex")
+                                            .css("z-index", 300)
+                                            .css("top", function () {
+                        return $(window).scrollTop() > 0 ? 0 : "44px";
+                    });
+                //set menu-container postion
+                $(".menu-container").css("top",
+                                            $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                $(".main-content").css("margin-top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+            } else {
+                $(".main-content").css("margin-top", "76px");
+            }   
+        },
+        resize: function () {
+            if ($(window).width() <= 768) {                
                 $('header').hide(500);
                 $(".toggle-container").css("display", "flex")
                     .css("z-index", 300)
                     .css("top", function () {
                         return $(window).scrollTop() > 0 ? 0 : "44px";
-                    }); /*.css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000);*/
+                    });
                 $(".menu-container").css("z-index", 101)
                     .css("top", function () {
                         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
@@ -152,6 +158,8 @@ var initialize = {
                 console.log("小於768 >>window.width= " + $(window).width()); 
             }else{
                 $("#logo").is(":visible")? "":$("#logo").css("display","block");
+                $(".sidebar-left").is(":visible")? $(".sidebar-left").css("width","0px"):"";
+                $(".sidebar-close").is(":visible")? $(".sidebar-close").addClass("hidden"):"";                
                 $('.sidebar').css("top", "44px").show(500);
                 $("header").css("left", $(".sidebar").outerWidth())
                                 .css("top", "44px")
@@ -159,7 +167,7 @@ var initialize = {
                 $(".toggle-container").hide();
                 //set main-content postion
                 console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
-                $(".main-content").css("margin-top", $("header").position().top + $("header").outerHeight() );
+                $(".main-content").css("margin-top", "76px" );
                 console.log("大於768 >>window.width= " + $(window).width()); 
             }
         },

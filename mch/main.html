@@ -306,46 +306,11 @@
 
     <script type="text/javascript">
         $(window).scroll(function () {
-            if ($(window).width() <= 768) {
-                $('.sidebar').css("top", function () {
-                        return $(window).scrollTop() > 0 ? "0px" : "44px";
-                    });
-                if ($(window).scrollTop() > 0) {
-                    
-                    $("#logo").fadeOut(500);
-                    $("header").css("left", $(".sidebar").outerWidth())
-                        .css("top", 0)
-                        .css('opacity', 0)
-                        .animate({ "opacity": 1 }, 1000);
-                    
-                } else {
-                    $("#logo").fadeIn(1000);
-                    $("header").css("left", $(".sidebar").outerWidth())
-                                .css("top", $(".sidebar").position().top)
-                                    .css('opacity', 0)
-                                        .animate({ "opacity": 1 }, 1000);
-                }
-                $(".toggle-container").css("display", "flex")
-                                            .css("z-index", 300)
-                                            .css("top", function () {
-                        return $(window).scrollTop() > 0 ? 0 : "44px";
-                    });
-                //set menu-container postion
-                $(".menu-container").css("top",
-                                            $(".toggle-container").position().top + $(".toggle-container").outerHeight());
-                $(".main-content").css("margin-top", $(window).scrollTop() + $(".toggle-container").position().top);
-            } else {
-                $(".main-content").css("margin-top", $(window).scrollTop() + $("header").position().top);
-            }
-
-            //initialize.layout.redraw();               
+            initialize.layout.scroll();
         });
         $(window).resize(function () {
             console.log("$(window).resize()")
-            //$(".width").val($(window).width())
             initialize.layout.resize();
-            //initialize.accordion.run();
-            //initialize.layout.redraw();
         });
     </script>
 </body>
