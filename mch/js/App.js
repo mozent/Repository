@@ -11,34 +11,14 @@ $(document).ready(function () {
     })();
     initialize.init.fireEventListener();
     initialize.accordion.run();
+    initialize.layout.resize();
     initialize.layout.redraw();
 });
 
 var initialize = {
     init: {
         resize: function () {
-            /* $(".sidebar-menu").attr("id","accordion");
-            //clone header children to BottomBar Menu
-            var _accordion2 = "<div id='accordion_menu'></div>";
-            $(_accordion2).prependTo(".menu-container");
-            $('div.navigation>.header-nav').clone().appendTo($("#accordion_menu"));
-            $(".sidebar-toggle").on("click",function(){
-                $("#menu-toggle").prop("checked",false);
-                $(".menu-toggle").removeClass("selected-menu-toggle"); // 
-                console.log($(".toggle-container").position().top + $(".toggle-container").outerHeight());
-                //$(".sidebar").css("position","fixed"); //.css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
-            });
-            $(".menu-toggle").on("click",function(){
-                $(this).toggleClass("selected-menu-toggle");
-                $("#sidebar-toggle").prop("checked",false);
 
-            }); */
-            /* if ($(window).width() <= 768) {
-                
-            }else{
-                $("header").show(500);
-            } */
-            
         },
         fireEventListener: function () {
             $(".sidebar-toggle").on("click", function () {
@@ -148,6 +128,41 @@ var initialize = {
     layout: {
         width: $(window).width(),
         height: $(window).height(),
+        resize: function () {
+            if ($(window).width() <= 768) {
+                // $("#logo").is(":visible")? "":$("#logo").css("display","block");
+                $('header').hide(500);
+                $(".toggle-container").css("display", "flex")
+                    .css("z-index", 300)
+                    .css("top", function () {
+                        return $(window).scrollTop() > 0 ? 0 : "44px";
+                    }); /*.css('opacity', 0)
+                                                .animate({ "opacity": 1 }, 1000);*/
+                $(".menu-container").css("z-index", 101)
+                    .css("top", function () {
+                        return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
+                    });
+                $(".main-content").css("margin-top", function () {
+                    return $(window).scrollTop() > 0 ? $(window).scrollTop() + $(".toggle-container").position().top + $(".toggle-container").outerHeight() : $(".toggle-container").position().top + $(".toggle-container").outerHeight();
+                });
+                $(".footer").css("display", function () {
+                    return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
+                });
+                $('.sidebar').hide(500);
+                console.log("小於768 >>window.width= " + $(window).width()); 
+            }else{
+                $("#logo").is(":visible")? "":$("#logo").css("display","block");
+                $('.sidebar').css("top", "44px").show(500);
+                $("header").css("left", $(".sidebar").outerWidth())
+                                .css("top", "44px")
+                                .css("display","block");
+                $(".toggle-container").hide();
+                //set main-content postion
+                console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
+                $(".main-content").css("margin-top", $("header").position().top + $("header").outerHeight() );
+                console.log("大於768 >>window.width= " + $(window).width()); 
+            }
+        },
         redraw: function () {
             $('div.navigation').find('h3').hover(function () {
                 if ($(this).next().hasClass("submenu")) {
@@ -160,41 +175,38 @@ var initialize = {
             });
             $('div.navigation').find('div.submenu').hover(function () {
                 $(this).toggleClass("visible");
-            });
-
-            //set menu-container postion
-            $(".menu-container").css("top",
-                $(".toggle-container").position().bottom);
+            });          
+            
             //判斷視窗大小，將header hidden，show menu bar 
             if ($(window).width() <= 768) {
                 //header 消失後,計算 toggle container的高度
-                $('header').hide(500);
+                // $('header').hide(500);
                 //console.log("this.scrollTop= " + $(window).scrollTop());
-                $(".toggle-container").css("display", "flex")
-                    .css("z-index", 300)
-                    .css("top", function () {
-                        return $(window).scrollTop() > 0 ? 0 : "44px";
-                    }); /*.css('opacity', 0)
-                                                .animate({ "opacity": 1 }, 1000);*/
-                $(".menu-container").css("z-index", 101)
-                    .css("top", function () {
-                        return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
-                    });
+                // $(".toggle-container").css("display", "flex")
+                //     .css("z-index", 300)
+                //     .css("top", function () {
+                //         return $(window).scrollTop() > 0 ? 0 : "44px";
+                //     }); /*.css('opacity', 0)
+                                                // .animate({ "opacity": 1 }, 1000);*/
+                // $(".menu-container").css("z-index", 101)
+                //     .css("top", function () {
+                //         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
+                //     });
                 //     ============
                 /* $(".sidebar").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight() + 1); */ //.fadeIn(1000);
-                $(".main-content").css("margin-top", $(".toggle-container").position().top);
+                // $(".main-content").css("margin-top", $(".toggle-container").position().top);
 
-                $(".footer").css("display", function () {
-                    return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
-                });
-                $('.sidebar').hide(500);
+                // $(".footer").css("display", function () {
+                //     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
+                // });
+                // $('.sidebar').hide(500);
                 /* $(".sidebar-left").css("top", function () {
                     return $(window).scrollTop() > 0 ? $(window).scrollTop() : 0;
                 });
                 console.log(".sidebar-left-top =" + $(".sidebar-left").position().top + $(".sidebar-left").outerHeight() + $(window).scrollTop());
  */
                 //console.log("小於768 >>window.width= " + $(window).width() + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
-                console.log("小於768 >>window.width= " + $(window).width());  
+                // console.log("小於768 >>window.width= " + $(window).width());  
             } else {
                 /* $(".header-nav").prependTo($('div.navigation'), function () {
                     $(".accordion").accordion({
@@ -202,7 +214,9 @@ var initialize = {
                     });
                 }); */
                 //============
-                $('.sidebar').show(500);
+
+                
+                /* $('.sidebar').show(500);
                 $("header").css("left", function () {
                     return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
                 }).css("top", function () {
@@ -211,7 +225,7 @@ var initialize = {
                 //===============
                 $(".toggle-container").hide();
                 $(".main-content").css("margin-top", $("header").position().top );
-                console.log("大於768 >>window.width= " + $(window).width());                
+                console.log("大於768 >>window.width= " + $(window).width());     */            
             }
         }
     }

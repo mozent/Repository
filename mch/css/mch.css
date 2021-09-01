@@ -102,7 +102,7 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    margin-top: 44px;
+    /* margin-top: 44px; */
     margin-left: 220px;
     width: calc(100% - 220px);
     font-family: '微軟正黑體', '新細明體', sans-serif;
