@@ -31,11 +31,21 @@ body {
 a {
     text-decoration: none;
 }
-
 #logo::before {
     content: '';
     position: fixed;
-    background: url(../img/banner-a-e.jpg);
+    background: linear-gradient( to right, #3d766d, transparent);
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 40%;
+    height: 44px;
+    left: 268px;
+    z-index: 100;
+}
+
+#logo {
+    position: fixed;
+    background: url(../img/banner-logo.jpg);
     background-repeat: no-repeat;
     color: transparent;
     width: 100%;
@@ -417,6 +427,41 @@ h3 > .material-icons {
 .main {
     /* display: none; */
 }
+#explore-actions {
+    width: 100%;
+    z-index: 9999;
+}
+#explore-actions .sort-control a.active {
+    border-bottom-color: #8a8346;
+    font-weight: bold;
+}
+
+#explore-actions .sort-control a:hover {
+    color: var(--color-pinkRed);
+}
+#explore-actions .sort-control a {
+    color: #232111;
+    font-size: 17px;
+    padding: 10px;
+    /* width: 100%; */
+    text-align: center;
+    border-bottom: 3px solid #8a834600;
+}
+#explore-actions .sort-control {
+    /* width: 100%; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch;
+    margin-bottom: 10px;
+}
+/* 
 .tabBar a.btn {
     display: inline-block;
     color: #000000;
@@ -430,7 +475,7 @@ h3 > .material-icons {
     text-decoration: none;
     letter-spacing: 2px;
     transition: 0.5s;
-}
+} */
 
 .tabBar a.btn:hover {
     letter-spacing: 3px;

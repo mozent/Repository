@@ -42,6 +42,12 @@ var initialize = {
                 $("#sidebar-toggle").prop("checked", false);
                 $(this).find(".material-icons").toggleClass("flip");
             });
+            $(".sort-control").find("a").on("click",function(){
+                $(".sort-control>a").each(function(){
+                    $(this).removeClass("active");
+                });
+                $(this).addClass("active");
+            });
             sidebar_left_click = function () {
                 $(".sidebar-left").each( function () {
                     if ($(this).width() > 0) {
