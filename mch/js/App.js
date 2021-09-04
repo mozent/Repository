@@ -137,9 +137,9 @@ var initialize = {
                 //set menu-container postion
                 $(".menu-container").css("top",
                                             $(".toggle-container").position().top + $(".toggle-container").outerHeight());
-                $(".main-content").css("margin-top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                $(".main-content").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
             } else {
-                $(".main-content").css("margin-top", "76px");
+                $(".main-content").css("top", "76px");
             }   
         },
         resize: function () {
@@ -154,7 +154,7 @@ var initialize = {
                     .css("top", function () {
                         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
                     });
-                $(".main-content").css("margin-top", function () {
+                $(".main-content").css("top", function () {
                     return $(window).scrollTop() > 0 ? $(window).scrollTop() + $(".toggle-container").position().top + $(".toggle-container").outerHeight() : $(".toggle-container").position().top + $(".toggle-container").outerHeight();
                 });
                 $(".footer").css("display", function () {
@@ -167,13 +167,13 @@ var initialize = {
                 $(".sidebar-left").is(":visible")? $(".sidebar-left").css("width","0px"):"";
                 $(".sidebar-close").is(":visible")? $(".sidebar-close").addClass("hidden"):"";                
                 $('.sidebar').css("top", "44px").show(500);
-                $("header").css("left", $(".sidebar").outerWidth())
+                $("header").css("left", "220px")
                                 .css("top", "44px")
                                 .css("display","block");
                 $(".toggle-container").hide();
                 //set main-content postion
                 console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
-                $(".main-content").css("margin-top", "76px" );
+                $(".main-content").css("top", "76px" );
                 console.log("大於768 >>window.width= " + $(window).width()); 
             }
         },

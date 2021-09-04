@@ -3,7 +3,7 @@
 :root {    
     --main-color: #aca45b;
     --color-pinkRed: #DD2F6E;
-    --color-dark: #1D2231;
+    --color-dark: #454223;
     --color-background: #f6f6f6;
     --color-sidebar-background: #eee;
     --text-grey: #8390A2;
@@ -17,17 +17,28 @@
     text-decoration: none;
     list-style-type: none;
     scroll-behavior: smooth;
-    font-family: '微軟正黑體', '新細明體', 'Poppins', sans-serif;
+    /* font-family: '微軟正黑體', '新細明體', 'Poppins', sans-serif; */
+    font-family: 新細明體,helvetica,sans serif;
 }
 
+.top-gradiant::before {
+    content: '';
+    position: fixed;
+    /* background-color: #f1f0e3; */
+    /* background-image: url(../img/background.png); */
+    /* background: linear-gradient( to bottom, #59aba3, transparent); */
+    background: linear-gradient( to bottom, #cfe0fc, transparent);
+
+    background-repeat: repeat-x;
+    height: 284px;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+}
 body {
     height: 1000px;
-    color: #222;
-    background-color: #fbfcfd;
-    background-image: url(../img/background.png);
-    background-repeat: repeat-x;
+    color: #232111;    
 }
-
 a {
     text-decoration: none;
 }
@@ -42,7 +53,13 @@ a {
     left: 268px;
     z-index: 100;
 }
-
+#logo::after {
+    background: #fff;
+    width: 40%;
+    height: 44px;
+    left: 268px;
+    z-index: 100;
+}
 #logo {
     position: fixed;
     background: url(../img/banner-logo.jpg);
@@ -98,11 +115,16 @@ a {
 .ui-accordion h3.ui-accordion-header > span > a {
     color: #ffffff;
 }
-.ui-accordion .ui-state-active {
-    border: 1px solid #003eff;
-    background: #007fff77;
+.ui-accordion .ui-accordion-header-active.ui-state-active {
+    border: 1px solid #ddd;
+    background: #cec99e;
     font-weight: normal;
-    color: #ffffff;
+    box-shadow: -1px -1px var(--color-dark);
+}
+.ui-accordion .ui-accordion-header-active.ui-state-active > span > a {
+    color: var(--color-dark);
+    font-weight: 600;
+    font-size: 1.1rem;    
 }
 .ui-accordion .ui-accordion-header{
     margin: 0;
@@ -122,9 +144,16 @@ a {
 
 .main-content {
     /* display: none; */
-    padding-left: 10px;    
+    padding-left: 10px;
+    position: relative;
+    top: 32px;
+    height: 1000px;   
 }
-
+h3.header-nav img {
+    height: 18px;
+    width: 18px;
+    margin-right: 4px;
+}
 .footer {
     display: flex;
     justify-content: left;
@@ -133,10 +162,12 @@ a {
     /* top: calc(100vh-38); */
     width: 100%;
     height: 38px;
-    background-color: #BEC8E4;
+    background-color: #598aab;
     bottom: 0px;
 }
-
+.footer {
+    height: 36px;    
+}
 .search {
     display: flex;
     justify-content: left;
@@ -144,7 +175,9 @@ a {
     flex-direction: row;
     padding:4px;
 }
-
+.search span {
+    color: var(--color-sidebar-background);
+}
 .search input {
     outline: none;
     border: 1px solid var(--main-color);
@@ -159,6 +192,7 @@ a {
     letter-spacing: 2px;
     width: 60px;
     transition: 0.5s;
+    box-shadow: 1px 1px var(--color-dark);
 }
 
 .search input[type=button]:hover {
@@ -171,6 +205,7 @@ a {
 
 header {
     position: fixed;
+    z-index: 1;
 }
 
 div.navigation {
@@ -194,7 +229,9 @@ div.navigation > h3 {
 div.navigation > div.header-nav {    
     display: none;
 }
-
+div.navigation h3:hover {
+    box-shadow: 1px 2px var(--color-dark);
+}
 div.navigation h3,
 div.navigation h3 span a {
     background-color: #ACA45B;
@@ -246,7 +283,7 @@ div.navigation > div.submenu,
     display: none;
     justify-content: space-between;
     flex-direction: column;
-    padding: 6px 0px;
+    padding: 3px 0px;
     /* background-color: #ACA45B; */
     /* color: #fff; */
     /* border: 1px solid #e7e7e7; */
@@ -264,48 +301,13 @@ div.sidebar-menu > div.submenu span a {
     color: var(--color-dark);
 }
 
-div.sidebar-menu > div.submenu span a:hover {
+/* div.sidebar-menu > div.submenu span a:hover {
     color: var(--color-pinkRed);
 }
-
-div.navigation > div.submenu span a {
+ */
+div.submenu span a {
     color: #fff;
 }
-
-/* 
-div.navigation h3 span,
-div.navigation h3 a,
-div.submenu span {
-    color: #ffffff;
-}
- */
-/*
-.sidebar div.submenu {
-    display: none;   
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0;    
-    background-color: #ACA45B;    
-    cursor: pointer;
-    position: absolute;
-    z-index: -99;    
-}
-
-div.navigation h3:hover div.submenu,
-div.navigation h3 div.submenu:hover {    
-    position: absolute;
-    top: 21px;
-    left: 6px;    
-    flex-wrap: nowrap;
-    z-index: 99;
-}
-
-
-
-
-*/
 
 div.submenu > span {
     padding: 4px 12px;    
@@ -318,7 +320,7 @@ div.submenu > span > a:hover {
 
 /* div.navigation h3:hover, */
 div.submenu > span:hover {
-    background-color: #bec8e452;
+    background-color: #dfdcc1;
 }
 
 .sidebar-toggle {
@@ -429,7 +431,7 @@ h3 > .material-icons {
 }
 #explore-actions {
     width: 100%;
-    z-index: 9999;
+    /* z-index: 1; */
 }
 #explore-actions .sort-control a.active {
     border-bottom-color: #8a8346;
@@ -438,11 +440,12 @@ h3 > .material-icons {
 
 #explore-actions .sort-control a:hover {
     color: var(--color-pinkRed);
+    border-bottom-color: #f1f0e3;
 }
 #explore-actions .sort-control a {
     color: #232111;
     font-size: 17px;
-    padding: 10px;
+    padding: 6px 10px;
     /* width: 100%; */
     text-align: center;
     border-bottom: 3px solid #8a834600;
@@ -458,7 +461,8 @@ h3 > .material-icons {
     flex-flow: row nowrap;
     -webkit-box-pack: stretch;
     -ms-flex-pack: stretch;
-    justify-content: stretch;
+    justify-content: stretch;    
+    margin: 0 6px;
     margin-bottom: 10px;
 }
 /* 
@@ -551,18 +555,20 @@ h3 > .material-icons {
 section {
     display: none;
 }
-
+.main {
+    overflow: hidden;
+}
 /*------------ / mobile_menu ------------*/
 
 @media screen and (max-width: 1280px) {
-    .main {
+    /* .main {
         overflow-x: auto;
-    }
+    } */
 }
 @media only screen and (max-width: 1100px) {
-    .main {
+    /* .main {
         overflow-x: auto;
-    }
+    } */
 }
 @media only screen and (max-width: 768px) {
 
@@ -612,11 +618,6 @@ section {
     .sidebar-toggle,
     .menu-toggle {
         display: inline-block;
-    }
-    
-
-    .footer {
-        height: 36px;
     }
 
     .search {
