@@ -605,7 +605,7 @@ section {
 */
     .main {
         margin-left: 0px;
-        background: #fff;
+        /* background: #fff; */
         width: 100%;
     }
 
@@ -637,7 +637,7 @@ section {
 
     .main {
         margin-left: 0px;
-        background: #fff;
+        /* background: #fff; */
         transition: 0.5s;
     }
 
