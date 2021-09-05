@@ -13,6 +13,7 @@ $(document).ready(function () {
     initialize.accordion.run();
     initialize.layout.resize();
     initialize.layout.redraw();
+    initialize.layout.scroller();
 });
 
 var initialize = {
@@ -47,8 +48,11 @@ var initialize = {
                     $(this).removeClass("active");
                 });
                 $(this).addClass("active");
+                console.log($(this).attr("href"));
+                $($(this).attr("href")).find(".content").css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()+20);
                 console.log($(this).text());
-                getWeather();
+                console.log($("#explore-actions").position().top + $("#explore-actions").outerHeight());
+                //getWeather();
             });
             sidebar_left_click = function () {
                 $(".sidebar-left").each( function () {
@@ -191,58 +195,30 @@ var initialize = {
             });
             $('div.navigation').find('div.submenu').hover(function () {
                 $(this).toggleClass("visible");
-            });          
+            });        
             
-            //判斷視窗大小，將header hidden，show menu bar 
-            if ($(window).width() <= 768) {
-                //header 消失後,計算 toggle container的高度
-                // $('header').hide(500);
-                //console.log("this.scrollTop= " + $(window).scrollTop());
-                // $(".toggle-container").css("display", "flex")
-                //     .css("z-index", 300)
-                //     .css("top", function () {
-                //         return $(window).scrollTop() > 0 ? 0 : "44px";
-                //     }); /*.css('opacity', 0)
-                                                // .animate({ "opacity": 1 }, 1000);*/
-                // $(".menu-container").css("z-index", 101)
-                //     .css("top", function () {
-                //         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
-                //     });
-                //     ============
-                /* $(".sidebar").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight() + 1); */ //.fadeIn(1000);
-                // $(".main-content").css("margin-top", $(".toggle-container").position().top);
+            //
 
-                // $(".footer").css("display", function () {
-                //     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
-                // });
-                // $('.sidebar').hide(500);
-                /* $(".sidebar-left").css("top", function () {
-                    return $(window).scrollTop() > 0 ? $(window).scrollTop() : 0;
-                });
-                console.log(".sidebar-left-top =" + $(".sidebar-left").position().top + $(".sidebar-left").outerHeight() + $(window).scrollTop());
- */
-                //console.log("小於768 >>window.width= " + $(window).width() + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
-                // console.log("小於768 >>window.width= " + $(window).width());  
-            } else {
-                /* $(".header-nav").prependTo($('div.navigation'), function () {
-                    $(".accordion").accordion({
-                        heightStyle: "content", active: false, collapsible: true
-                    });
-                }); */
-                //============
-
-                
-                /* $('.sidebar').show(500);
-                $("header").css("left", function () {
-                    return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
-                }).css("top", function () {
-                    return $(window).scrollTop() > 0 ? "0px" : "44px";
-                }).show(500);
-                //===============
-                $(".toggle-container").hide();
-                $(".main-content").css("margin-top", $("header").position().top );
-                console.log("大於768 >>window.width= " + $(window).width());     */            
+            
+        },
+        scroller: function() {
+            var counter=0;
+            run = function(){  
+                counter++;              
+                $(".scroller_text").each(function(index){                    
+                    if (counter%3 == index){                        
+                        $.when($(".scroller").html($(this).find("a").clone())
+                                        .css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()).fadeIn(3500).css("z-index",10)
+                                                .fadeOut(500)).done(function(){
+                                                                          run();
+                        });                        
+                    }
+                    //console.log("counter%3 = "+counter%3 + ", counter="+ counter)
+                    //console.log("index="+index +", "+ $(this).text())
+                });                
+                //window.setTimeout(function(){ run() }, 4000);   
             }
+            run();
         }
     }
 }
@@ -284,3 +260,4 @@ $(".sidebar-toggle").click(function (event) {
     //initialize.accordion.run();
     initialize.layout.redraw();
 }); */
+

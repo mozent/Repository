@@ -470,7 +470,9 @@ h3 > .material-icons {
 }
 #explore-actions {
     width: 100%;
+    position: fixed;
     /* z-index: 1; */
+    top: 76px;
 }
 #explore-actions .sort-control a.active {
     border-bottom-color: #8a8346;
@@ -592,10 +594,66 @@ h3 > .material-icons {
     z-index: 101;
 }
 section {
-    display: none;
+    display: block;
+    height: 100vh;
+
+}
+section div {
+    position: relative;
+    top: 90px;
+
 }
 .main {
     overflow: hidden;
+}
+@keyframes animate-scroller {
+    0% {
+        top: -18px;opacity: 0;
+    }
+    10% {
+        top: -20px;opacity: .5;z-index: 100;
+    }
+    25% {
+        top: -30px;opacity: 1;z-index: 100;
+    }
+    /* 60% {
+        top: -30px;
+    } */
+    75% {
+        top: -30px;opacity: 1;z-index: 100;
+    }
+    90% {
+        top: -42px;z-index: 0;opacity: 0;
+    }
+    100% {
+        top: -42px;z-index: 0;
+    }
+}
+#scroller div {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+#scroller div.scroller {
+    position: relative;
+    /* animation: animate-scroller 4s linear infinite; */
+    color: blue;
+    font-weight: 600;
+}
+#scroller div.mask {
+    position: relative;
+    top: 0px;
+    z-index: 9;
+    background: #fff;
+    height: 30px;
+    width: 100%;
+    display:none;
+}
+.scroller_text {
+    display:none !important;
 }
 /*------------ / mobile_menu ------------*/
 
@@ -639,6 +697,8 @@ section {
     #menu-toggle:checked ~ .main {
         display: none !important;
     }
+
+    
 /*
     #sidebar-toggle:checked + .sidebar-left{
         width: 100%;
