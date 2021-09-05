@@ -248,34 +248,30 @@ var initialize = {
 }
 
 function getWeather() {
+    var at_dataTime;
+    var at_temp;
+    var at_measures;
     var weatherAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-041?Authorization=CWB-2575FCCA-F801-48D3-9BA3-BDE7E53A9675&locationName=%E8%8A%B1%E8%93%AE%E5%B8%82&AT&startTime=2021-09-05T00:00:00&endTime=2021-09-05T03:00:00&limit=1";
     $.getJSON( weatherAPI, {
-      tags: "mount rainier",
       tagmode: "any",
       format: "json"
     })
       .done(function( data ) {
-        console.log(data);
+        //console.log(data);
         $.each( data.records.locations, function( i, item ) {
-          /* $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" ); */
-          /* if ( i === 3 ) {
-            return false;
-          } */
-          console.log(item.datasetDescription);
-          console.log(item["location"]);
-          console.log(item["location"][0].locationName);
-          console.log(item["location"][0].weatherElement.length);
-          console.log(item["location"][0].weatherElement[0]);
-            $.each( item["location"][0].weatherElement, function( j, weather_item ) {
-                console.log(weather_item["description"]);
-                console.log(item["location"][i].weatherElement[j]);
-                //console.log(weather_item[j].elementName); //weatherElement
-                
-            });
-          
+            $.each( item["location"][0].weatherElement, function( j, weather_item ) {                
+                if (weather_item["description"]!="溫度")return;
+                console.log(item["location"][i].weatherElement[j]);                 
+                $.each( weather_item.time, function( k, time_item ) {
+                    console.log(time_item["dataTime"]);
+                    at_dataTime =time_item["dataTime"];
+                    console.log(time_item["elementValue"][0].measures);
+                    at_measures = time_item["elementValue"][0].measures;
+                    at_temp = time_item["elementValue"][0].value;
+                    console.log(time_item["elementValue"][0].value);
+                });                
+            });          
         });
-        //obj = JSON.parse(data);
-    
       });
   }
 /* 

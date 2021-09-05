@@ -42,6 +42,45 @@ body {
 a {
     text-decoration: none;
 }
+.weather div:first-child {
+    position: absolute;
+    z-index: 200;
+    right: 100px;
+    top: 10px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    flex-direction: row;
+}
+.weather div.now {
+    position: absolute;
+    z-index: 200;
+    right: 30px;
+    top: 6px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    flex-direction: row;
+}
+.weather div:first-child span {
+    vertical-align: middle;
+    color: #fff;
+}
+.weather div:first-child img {
+    border-style: none;
+    vertical-align: bottom;
+}
+
+.weather div:first-child img {
+    height: 32px;
+    aspect-ratio: auto 32 / 32;
+    width: 32px;
+}
+.weather div.now {
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 54%);
+}
 #logo::before {
     content: '';
     position: fixed;
@@ -51,7 +90,7 @@ a {
     width: 40%;
     height: 44px;
     left: 268px;
-    z-index: 100;
+    z-index: 00;
 }
 #logo::after {
     background: #fff;
