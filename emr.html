@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table style="width: 100%;">
+        <tbody>
+            <tr>
+                <td align="left"><span style="font-size: large;">護理醫囑核對</span><br /><span
+                        style="font-size: 10px;">一般給藥</span></td>
+                <td align="right"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td><span style="font-size: 12px;"><b>姓名</b></span></td>
+                                <td><span style="font-size: 12px;"><b>身分證號</b></span></td>
+                                <td><span style="font-size: 12px;"><b>出生日期</b></span></td>
+                                <td><span style="font-size: 12px;"><b>病歷號碼</b></span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <x:xform class="xform" tag="patientName" path="//patientName"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform" type="3">
+                                        <span>病患姓名</span>
+                                    </x:xform>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="patientIdNumber"
+                                        path="//patientIdNumber"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform" type="3">
+                                        <span>身分證號</span>
+                                    </x:xform>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="patientBirth" path="//patientBirth"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform" type="3">
+                                        <span>病患生日</span>
+                                    </x:xform>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr attr="Order_General_Items,td">
+
+                                <td>類別：</td>
+                                <td>
+                                    <x:xform class="xform" tag="data_type" type="3"
+                                        path="//Order_General_Items/data_type"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>類別</span>
+                                    </x:xform>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr attr="Order_General_Items,td">
+                                <td>
+                                    <span>DC：</span>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="DC" type="3"
+                                        path="//Order_General_Items/DC"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>DC</span>
+                                    </x:xform>
+                                </td>
+                                <td>
+                                    <span>醫囑開始日期：</span>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="st_date" type="3"
+                                        path="//Order_General_Items/st_date"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>醫囑開始日期</span>
+                                    </x:xform>
+                                    <x:xform class="xform" tag="st_time" type="3"
+                                        path="//Order_General_Items/st_time"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>醫囑開始時間</span>
+                                    </x:xform>
+                                </td>
+                            </tr>
+                            <tr attr="Order_General_Items,td">
+                                <td>
+                                    <span>醫令：</span>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="order_base" type="3"
+                                        path="//Order_General_Items/order_base"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>醫令</span>
+                                    </x:xform>
+                                </td>
+                                <td>
+                                    <span>藥品學名：</span>
+                                </td>
+                                <td>
+                                    <x:xform class="xform" tag="drug_generic_name" type="3"
+                                        path="//Order_General_Items/drug_generic_name"
+                                        xmlns:x="http://www.exentric.com.tw/html/xform">
+                                        <span>藥品學名</span>
+                                    </x:xform>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="right">
+                    <x:xform class="xform" tag="Recorded_By" type="3" path="//Recorded_By"
+                        xmlns:x="http://www.exentric.com.tw/html/xform"><span>記錄者</span></x:xform>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
