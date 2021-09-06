@@ -11,9 +11,9 @@ $(document).ready(function () {
     })();
     initialize.init.fireEventListener();
     initialize.accordion.run();
-    initialize.layout.resize();
+    //initialize.layout.resize();
     initialize.layout.redraw();
-    initialize.layout.scroller();
+    //initialize.layout.scroller();
 });
 
 var initialize = {
@@ -49,9 +49,19 @@ var initialize = {
                 });
                 $(this).addClass("active");
                 console.log($(this).attr("href"));
-                $($(this).attr("href")).find(".content").css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()+20);
-                console.log($(this).text());
-                console.log($("#explore-actions").position().top + $("#explore-actions").outerHeight());
+                //var explore_actions = $(".content").position().top +20
+                if ($(this).attr("href")=="#scroller") {
+                    $($(this).attr("href")).find(".content").css("position", "fixed").css("opacity",0).css("display","block");
+                }else{
+                    $("#scroller").find(".content").css("display","none");
+                }
+                
+                
+                //$($(this).attr("href")).find(".content").css("top", explore_actions);
+
+                $($(this).attr("href")).find(".content").css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()+10);
+                // console.log($(this).text());
+                // console.log($("#explore-actions").position().top + $("#explore-actions").outerHeight());
                 //getWeather();
             });
             sidebar_left_click = function () {
@@ -66,8 +76,7 @@ var initialize = {
                         $(this).css("width","100%");
                     }
                     console.log("sidebar_left ="+ $(this).width());
-                });
-                
+                });                
             }
         },
     },
@@ -144,9 +153,18 @@ var initialize = {
                 $(".menu-container").css("top",
                                             $(".toggle-container").position().top + $(".toggle-container").outerHeight());
                 $(".main-content").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                $("#explore-actions").css("top", function () {
+                    return $(window).scrollTop() > 0 ? "76px" : "";
+                }).css("position", function () {
+                    return $(window).scrollTop() > 0 ? "relative" : "fixed";
+                });
             } else {
                 $(".main-content").css("top", "76px");
+                $("#explore-actions").css("top", "76px");
             }   
+            $("#scroller").find(".content").css("display", function () {
+                return $(window).scrollTop() > 30 ? "none" : "block";
+            });
         },
         resize: function () {
             if ($(window).width() <= 768) {                
@@ -166,7 +184,9 @@ var initialize = {
                 $(".footer").css("display", function () {
                     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
                 });
-                $('.sidebar').hide(500);
+                $('.sidebar').hide(500);               
+                
+                $(".weather .description").css("display","none");
                 console.log("小於768 >>window.width= " + $(window).width()); 
             }else{
                 $("#logo").is(":visible")? "":$("#logo").css("display","block");
@@ -180,6 +200,8 @@ var initialize = {
                 //set main-content postion
                 console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
                 $(".main-content").css("top", "76px" );
+                
+                $(".weather .description").removeAttr("style");
                 console.log("大於768 >>window.width= " + $(window).width()); 
             }
         },
@@ -195,30 +217,79 @@ var initialize = {
             });
             $('div.navigation').find('div.submenu').hover(function () {
                 $(this).toggleClass("visible");
-            });        
-            
-            //
-
-            
+            });
+            if ($(window).width() <= 768) {                
+                $('header').hide(500);
+                $(".toggle-container").css("display", "flex")
+                    .css("z-index", 300)
+                    .css("top", function () {
+                        return $(window).scrollTop() > 0 ? 0 : "44px";
+                    });
+                $(".menu-container").css("z-index", 101)
+                    .css("top", function () {
+                        return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
+                    });
+                $(".main-content").css("top", function () {
+                    return $(window).scrollTop() > 0 ? $(window).scrollTop() + $(".toggle-container").position().top + $(".toggle-container").outerHeight() : $(".toggle-container").position().top + $(".toggle-container").outerHeight();
+                });
+                $(".footer").css("display", function () {
+                    return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
+                });
+                $('.sidebar').hide(500);               
+                
+                $(".weather .description").css("display","none");
+                console.log("小於768 >>window.width= " + $(window).width()); 
+            }else{
+                //$("#logo").is(":visible")? "":$("#logo").css("display","block");
+                //$(".sidebar-left").is(":visible")? $(".sidebar-left").css("width","0px"):"";
+                //$(".sidebar-close").is(":visible")? $(".sidebar-close").addClass("hidden"):"";                
+                $('.sidebar').css("top", "44px").show(500);
+                $("header").css("left", "220px")
+                                .css("top", "44px")
+                                .css("display","block");
+                //$(".toggle-container").hide();
+                //set main-content postion
+                //console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
+                //$(".main-content").css("top", "76px" );
+                
+                //$(".weather .description").removeAttr("style");
+                //console.log("大於768 >>window.width= " + $(window).width()); 
+                
+            }
+            this.scroller();
         },
         scroller: function() {
             var counter=0;
             run = function(){  
-                counter++;              
+                counter++; 
+                var explore_actions = $("#explore-actions").position().top + $("#explore-actions").outerHeight()+10 ;
+                //var explore_actions = $(".scroller").position().top +20
+                // console.log("explore_actions="+explore_actions);
+                // console.log("explore_actions.top="+ $("#explore-actions").position().top);
+                // $("#scroller").find(".content").css("top", explore_actions);  
+                //$("#scroller").find(".content").removeAttr("style");
+                // console.log("explore_actions="+explore_actions);
                 $(".scroller_text").each(function(index){                    
                     if (counter%3 == index){                        
-                        $.when($(".scroller").html($(this).find("a").clone())
-                                        .css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()).fadeIn(3500).css("z-index",10)
-                                                .fadeOut(500)).done(function(){
-                                                                          run();
+                        $.when($(".scroller").html($(this).find("a").clone()).css("position", "fixed").css("top", explore_actions +10 )
+                        .animate({
+                            top:  "-=10",
+                            opacity: 0.8
+                          }, 500)                
+                        .animate({
+                            opacity: 1
+                          }, 3500)).done(function(){
+                                      $(".scroller").animate({
+                                                       top: "-=25",
+                                                       opacity: 0
+                                                     }, 500,function(){
+                                                                 run();  //infinite                                          
+                                                            });                                            
                         });                        
                     }
-                    //console.log("counter%3 = "+counter%3 + ", counter="+ counter)
-                    //console.log("index="+index +", "+ $(this).text())
-                });                
-                //window.setTimeout(function(){ run() }, 4000);   
+                });
             }
-            run();
+            run(); //first run()
         }
     }
 }

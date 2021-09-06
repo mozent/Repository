@@ -79,6 +79,8 @@ a {
 .weather div.now {
     font-size: 2em;
     color: #fff;
+}
+.weather {
     text-shadow: 1px 1px 1px rgb(0 0 0 / 54%);
 }
 #logo::before {
@@ -332,11 +334,16 @@ div.navigation > div.submenu {
     background-color: #ACA45B;
 }
 
+div.navigation > div.submenu span a {
+    color: #fff;
+}
+
 div.sidebar-menu > div.submenu{
     background-color: #fff;    
 }
 
-div.sidebar-menu > div.submenu span a {
+div.sidebar-menu > div.submenu span a,
+.menu-container > div.accordion_menu div.submenu span a {
     color: var(--color-dark);
 }
 
@@ -344,9 +351,7 @@ div.sidebar-menu > div.submenu span a {
     color: var(--color-pinkRed);
 }
  */
-div.submenu span a {
-    color: #fff;
-}
+
 
 div.submenu > span {
     padding: 4px 12px;    
@@ -481,7 +486,7 @@ h3 > .material-icons {
 
 #explore-actions .sort-control a:hover {
     color: var(--color-pinkRed);
-    border-bottom-color: #f1f0e3;
+    /* border-bottom-color: #f1f0e3; */
 }
 #explore-actions .sort-control a {
     color: #232111;
