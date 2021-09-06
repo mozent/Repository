@@ -13,6 +13,7 @@ $(document).ready(function () {
     initialize.accordion.run();
     initialize.layout.resize();
     initialize.layout.redraw();
+    initialize.layout.scroller();
 });
 
 var initialize = {
@@ -41,6 +42,17 @@ var initialize = {
                 $(this).toggleClass("selected-menu-toggle");
                 $("#sidebar-toggle").prop("checked", false);
                 $(this).find(".material-icons").toggleClass("flip");
+            });
+            $(".sort-control").find("a").on("click",function(){
+                $(".sort-control>a").each(function(){
+                    $(this).removeClass("active");
+                });
+                $(this).addClass("active");
+                console.log($(this).attr("href"));
+                $($(this).attr("href")).find(".content").css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()+20);
+                console.log($(this).text());
+                console.log($("#explore-actions").position().top + $("#explore-actions").outerHeight());
+                //getWeather();
             });
             sidebar_left_click = function () {
                 $(".sidebar-left").each( function () {
@@ -131,9 +143,9 @@ var initialize = {
                 //set menu-container postion
                 $(".menu-container").css("top",
                                             $(".toggle-container").position().top + $(".toggle-container").outerHeight());
-                $(".main-content").css("margin-top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
+                $(".main-content").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight());
             } else {
-                $(".main-content").css("margin-top", "76px");
+                $(".main-content").css("top", "76px");
             }   
         },
         resize: function () {
@@ -148,7 +160,7 @@ var initialize = {
                     .css("top", function () {
                         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
                     });
-                $(".main-content").css("margin-top", function () {
+                $(".main-content").css("top", function () {
                     return $(window).scrollTop() > 0 ? $(window).scrollTop() + $(".toggle-container").position().top + $(".toggle-container").outerHeight() : $(".toggle-container").position().top + $(".toggle-container").outerHeight();
                 });
                 $(".footer").css("display", function () {
@@ -161,13 +173,13 @@ var initialize = {
                 $(".sidebar-left").is(":visible")? $(".sidebar-left").css("width","0px"):"";
                 $(".sidebar-close").is(":visible")? $(".sidebar-close").addClass("hidden"):"";                
                 $('.sidebar').css("top", "44px").show(500);
-                $("header").css("left", $(".sidebar").outerWidth())
+                $("header").css("left", "220px")
                                 .css("top", "44px")
                                 .css("display","block");
                 $(".toggle-container").hide();
                 //set main-content postion
                 console.log("大於768 >>set main-content postion= " + $("header").position().top + ", "+$("header").outerHeight()); 
-                $(".main-content").css("margin-top", "76px" );
+                $(".main-content").css("top", "76px" );
                 console.log("大於768 >>window.width= " + $(window).width()); 
             }
         },
@@ -183,61 +195,61 @@ var initialize = {
             });
             $('div.navigation').find('div.submenu').hover(function () {
                 $(this).toggleClass("visible");
-            });          
+            });        
             
-            //判斷視窗大小，將header hidden，show menu bar 
-            if ($(window).width() <= 768) {
-                //header 消失後,計算 toggle container的高度
-                // $('header').hide(500);
-                //console.log("this.scrollTop= " + $(window).scrollTop());
-                // $(".toggle-container").css("display", "flex")
-                //     .css("z-index", 300)
-                //     .css("top", function () {
-                //         return $(window).scrollTop() > 0 ? 0 : "44px";
-                //     }); /*.css('opacity', 0)
-                                                // .animate({ "opacity": 1 }, 1000);*/
-                // $(".menu-container").css("z-index", 101)
-                //     .css("top", function () {
-                //         return $(window).scrollTop() > 0 ? $(".toggle-container").position().top + $(".toggle-container").outerHeight() : "";
-                //     });
-                //     ============
-                /* $(".sidebar").css("top", $(".toggle-container").position().top + $(".toggle-container").outerHeight() + 1); */ //.fadeIn(1000);
-                // $(".main-content").css("margin-top", $(".toggle-container").position().top);
+            //
 
-                // $(".footer").css("display", function () {
-                //     return $(window).scrollTop() > $(window).height() / 4 ? "none" : "flex";
-                // });
-                // $('.sidebar').hide(500);
-                /* $(".sidebar-left").css("top", function () {
-                    return $(window).scrollTop() > 0 ? $(window).scrollTop() : 0;
-                });
-                console.log(".sidebar-left-top =" + $(".sidebar-left").position().top + $(".sidebar-left").outerHeight() + $(window).scrollTop());
- */
-                //console.log("小於768 >>window.width= " + $(window).width() + ", this.toggleMenuHeight" +$(".toggle-container").outerHeight());
-                // console.log("小於768 >>window.width= " + $(window).width());  
-            } else {
-                /* $(".header-nav").prependTo($('div.navigation'), function () {
-                    $(".accordion").accordion({
-                        heightStyle: "content", active: false, collapsible: true
-                    });
-                }); */
-                //============
-
-                
-                /* $('.sidebar').show(500);
-                $("header").css("left", function () {
-                    return $(window).scrollTop() > 0 ? $(".sidebar").outerWidth() : "";
-                }).css("top", function () {
-                    return $(window).scrollTop() > 0 ? "0px" : "44px";
-                }).show(500);
-                //===============
-                $(".toggle-container").hide();
-                $(".main-content").css("margin-top", $("header").position().top );
-                console.log("大於768 >>window.width= " + $(window).width());     */            
+            
+        },
+        scroller: function() {
+            var counter=0;
+            run = function(){  
+                counter++;              
+                $(".scroller_text").each(function(index){                    
+                    if (counter%3 == index){                        
+                        $.when($(".scroller").html($(this).find("a").clone())
+                                        .css("top",$("#explore-actions").position().top + $("#explore-actions").outerHeight()).fadeIn(3500).css("z-index",10)
+                                                .fadeOut(500)).done(function(){
+                                                                          run();
+                        });                        
+                    }
+                    //console.log("counter%3 = "+counter%3 + ", counter="+ counter)
+                    //console.log("index="+index +", "+ $(this).text())
+                });                
+                //window.setTimeout(function(){ run() }, 4000);   
             }
+            run();
         }
     }
 }
+
+function getWeather() {
+    var at_dataTime;
+    var at_temp;
+    var at_measures;
+    var weatherAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-041?Authorization=CWB-2575FCCA-F801-48D3-9BA3-BDE7E53A9675&locationName=%E8%8A%B1%E8%93%AE%E5%B8%82&AT&startTime=2021-09-05T00:00:00&endTime=2021-09-05T03:00:00&limit=1";
+    $.getJSON( weatherAPI, {
+      tagmode: "any",
+      format: "json"
+    })
+      .done(function( data ) {
+        //console.log(data);
+        $.each( data.records.locations, function( i, item ) {
+            $.each( item["location"][0].weatherElement, function( j, weather_item ) {                
+                if (weather_item["description"]!="溫度")return;
+                console.log(item["location"][i].weatherElement[j]);                 
+                $.each( weather_item.time, function( k, time_item ) {
+                    console.log(time_item["dataTime"]);
+                    at_dataTime =time_item["dataTime"];
+                    console.log(time_item["elementValue"][0].measures);
+                    at_measures = time_item["elementValue"][0].measures;
+                    at_temp = time_item["elementValue"][0].value;
+                    console.log(time_item["elementValue"][0].value);
+                });                
+            });          
+        });
+      });
+  }
 /* 
 $(".sidebar-toggle").click(function (event) {
     initialize.sidebar_left_click();
@@ -248,3 +260,4 @@ $(".sidebar-toggle").click(function (event) {
     //initialize.accordion.run();
     initialize.layout.redraw();
 }); */
+
