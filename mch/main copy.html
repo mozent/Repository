@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/mch.css">
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/App.js"></script>
+    <title>門諾醫院-MyEIP</title>
+</head>
+
+<body>
+    <div class="top-gradiant"></div>
+    <div class="visible" id="logo"></div>
+    <div class="weather">
+        <div>
+            <img alt="局部雷陣雨" height="32" title="局部雷陣雨" width="32" class=" "
+                src="img/weather/scattered_showers_day_night@2x.png">
+            <span class="description">零星雷雨</span>
+        </div>
+        <div class="now">
+            <span class="Va(t)">33</span>
+            <span class="Va(t)">°</span>
+            <span class="unit-control">C</span>
+        </div>
+    </div>
+    </div>
+    <div class="toggle-container">
+        <div class="menu-toggle">
+            <h3>
+                <label for="menu-toggle">
+                    Menu
+                    <span class="material-icons">
+                        expand_more
+                    </span>
+                </label>
+            </h3>
+        </div>
+        <div class="sidebar-toggle">
+            <h3>
+                <label for="sidebar-toggle">
+                    <span class="material-icons">
+                        menu
+                    </span>
+                </label>
+            </h3>
+        </div>
+    </div>
+    <div class="main">
+        <input type="checkbox" name="menu-toggle" id="menu-toggle">
+        <div class="menu-container">
+            <div class="menu-container-close hidden">
+                <h3>
+                    <span class="material-icons">
+                        close
+                    </span>
+                </h3>
+            </div>
+        </div>
+        <header>
+            <div class="navigation">
+                <h3 class="header-nav">
+                    <span>
+                        <a href="#">員工訂餐系統</a></span>
+                </h3>
+                <div class="header-nav" aria-hidden="true">
+                    <p>.</p>
+                </div>
+
+                <h3 class="header-nav">
+                    <span>使用手冊 </span>
+                </h3>
+                <div class="header-nav submenu">
+                    <span><a href="https://notestest2.mch.org.tw/HIS_DOC/IPO_ICD10.pdf">住院醫令手術ICD-10及tw-DRG相關作業</a>
+                    </span>
+                    <span><a href="https://notestest2.mch.org.tw/HIS_DOC/心導管室ICD-10-PCS編碼作業.pdf">心導管室ICD-10-PCS編碼作業</a>
+                    </span>
+                    <span><a href="https://notestest2.mch.org.tw/HIS_DOC/放射科ICD-10-PCS編碼作業.pdf">放射科ICD-10-PCS編碼作業</a>
+                    </span>
+                </div>
+                <h3 class="header-nav">
+                    <span>專案團隊</span>
+                </h3>
+                <div class="header-nav submenu">
+                    <span><a href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                </div>
+                <h3 class="header-nav">
+                    <span>
+                        <a href="#about">院內資料庫</a>
+                    </span>
+                </h3>
+                <div class="header-nav" aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3 class="header-nav">
+                    <img src="img/vwicn121.gif" alt="">
+                    <span>
+                        <a href="#expert">個人郵件</a>
+                    </span>
+                </h3>
+                <div class="header-nav" aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3 class="header-nav">
+                    <span>
+                        <a href="#testimonials">網站地圖</a></span>
+                </h3>
+                <div class="header-nav" aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3 class="header-nav">
+                    <span>
+                        <a href="#contact">Contact</a></span>
+                </h3>
+                <div class="header-nav" aria-hidden="true">
+                    <p>.</p>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="explore-actions" id="explore-actions">
+                <div class="sort-control">
+                    <a data-action="sort" data-name="最新疫情" class="active" href="#scroller">
+                        <span class="channels-list-item">最新疫情</span>
+                    </a>
+                    <a data-action="sort" data-name="最新消息" class="" href="#news">
+                        <span class="channels-list-item">最新消息 (News)</span>
+                    </a>
+                    <a data-action="sort" data-name="心靈點滴" class="" href="#patch-adams">
+                        <span class="channels-list-item">心靈點滴</span>
+                    </a>
+                </div>
+            </div>
+            <section id="scroller">
+                <div class="content scroller">
+                    <a href="#">
+                        <span>COVID-19社區監測通報採檢及個案處理流程-1091012修訂....(2021/07/01)</span>
+                    </a>
+                </div>
+                <div class="scroller_text">
+                    <a href="#">
+                        <span>COVID-19社區監測通報採檢及個案處理流程-1091012修訂....(2021/07/01)</span>
+                    </a>
+                </div>                    
+                <div class="scroller_text">
+                    <a href="#"><span>「COVID-19社區監測通報採檢及個案處理流程」及相關文件(12/16)....(2021/05/20)</span></a>
+                </div>
+                <div class="scroller_text">
+                    <a href="#"><span>嚴重特殊傳染性肺炎（COVID-19)-通報與採檢....(2021/09/04)</span></a>
+                </div>
+                <div class="mask"> </div>
+        </section>
+            <section id="news">
+                        <div class="content">最新消息</div>
+            </section>
+            <section id="patch-adams">
+                <div class="content">心靈點滴</div>
+    </section>
+            <section class="contact" id="contact">
+                <div class="title white">
+                    <h3 class="titleText">
+                        <div>C</div>ontact Us
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+                <div class="contactForm">
+                    <h3>Send Message</h3>
+                    <div class="inputBox">
+                        <input type="text" name="Name" id="Name" placeholder="Name">
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="Email" id="Email" placeholder="Email">
+                    </div>
+                    <div class="inputBox">
+                        <textArea placeholder="write down something"></textArea>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" name="submit" id="submit" value="Send">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="footer">
+            <div class="search"><span>院內分機&簡碼查詢：</span>
+                <input type="text" name="phone" value="" id="phone">
+                <input type="button" onclick="" value="查詢">
+            </div>
+        </div>
+    </div>
+
+    <div id="left-column">
+        <input type="checkbox" name="sidebar-toggle" id="sidebar-toggle">
+        <div class="sidebar-left">
+        </div>
+        <div class="sidebar-close hidden">
+            <h3>
+                <span class="material-icons">
+                    close
+                </span>
+            </h3>
+        </div>
+        <div class="sidebar hidden">
+            <div class="sidebar-User">
+                <span>2021/08/26 星期四</span><span>使用者:吳志仁</span>
+            </div>
+            <div class="sidebar-menu">
+
+                <h3>
+                    <span>
+                        <a href="#">員工訂餐系統</a></span>
+                </h3>
+
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">門諾醫院MCHBI</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">2021年評鑑執行狀況</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">防疫專區</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">門諾醫療指標</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">美崙總院表單</a></span>
+
+                    <span class="material-icons">
+                        format_list_numbered_rtl
+                    </span>
+                </h3>
+                <div class="submenu">
+                    <span><a href="https://notestest2.mch.org.tw/project/ElderlyCare.nsf">老人安養中心(新版)</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/health.nsf">健康管理中心(新版)</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                    <span><a href="https://notestest2.mch.org.tw/project/JianBranch.nsf">吉安院區</a></span>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">壽豐分院表單</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">長照服務表單</a></span>
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">基金會表單 </a></span>
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">個人專區</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+                <h3>
+                    <span>
+                        <a href="#">員工園地</a></span>
+
+                </h3>
+                <div aria-hidden="true">
+                    <p>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            initialize.layout.scroll();
+        });
+        $(window).resize(function () {
+            console.log("$(window).resize()")
+            initialize.layout.resize();
+        });
+    </script>
+</body>
+
+</html>

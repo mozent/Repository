@@ -14,9 +14,40 @@ $(document).ready(function () {
     //initialize.layout.resize();
     initialize.layout.redraw();
     //initialize.layout.scroller();
+    initialize.constructor();
 });
 
 var initialize = {
+    constructor:function () {
+        scroller = function(){
+            var newurl = "https://notes.mch.org.tw/inf.nsf/(scroller)?OpenAgent";
+            ajaxProcess("#scroller", ".scroller_text", newurl);
+        }
+        function ajaxProcess(appendElement, element, newurl) {
+            var _id="";
+            $.ajax({
+                url: newurl,
+                  beforeSend: function( xhr ) {
+                                //_id = 'svgclone'+getRandomInt(142857).toString();
+                                //	$("#svg").clone().prop('id', _id).insertBefore($(element));        					
+                                },
+                type: "GET",
+                dataType: "any",
+                success: function(data) {
+                    var result = $(data).find($(element)).each(function(){
+                        $(appendElement).appendTo($(this).html());
+                    });                    
+                },
+               complete: function(xhr, status) {
+                        //$("#"+_id).remove();
+              },
+               error: function(xhr, status) {
+                    alert("Sorry, there was a problem!!");
+               }
+            });
+        }
+        scroller();
+    },
     init: {
         resize: function () {
 
@@ -78,7 +109,7 @@ var initialize = {
                     console.log("sidebar_left ="+ $(this).width());
                 });                
             }
-        },
+        }
     },
     accordion: {
         renderTo: {
